@@ -1,1 +1,8 @@
-<p>card-area works!</p>
+<div *ngIf="addedCoinsIds.length > 0" id="card-area-container">
+
+    <!-- depending on how many ids is in array, that many coin cards will be created -->
+    <div *ngFor="let coinId of addedCoinsIds" class="coin-card-wrapper">
+        <app-coin-card [cryptoCoinId]="coinId"></app-coin-card>
+    </div>
+    
+</div>

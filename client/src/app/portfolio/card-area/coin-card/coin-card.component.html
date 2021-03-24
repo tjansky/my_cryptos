@@ -1,0 +1,6 @@
+<div style="border: mediumvioletred solid; max-width: 130px;" *ngIf="cryptoCoin">
+    <h3>{{cryptoCoin.name}}</h3>
+    <div>{{cryptoCoin.market_data.current_price.usd | currency}}</div>
+    <img src="{{cryptoCoin.image.small}}" alt="">
+</div>
+<br>

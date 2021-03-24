@@ -5,12 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CardAreaComponent } from './portfolio/card-area/card-area.component';
+import { CoinCardComponent } from './portfolio/card-area/coin-card/coin-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PortfolioComponent,
-    CardAreaComponent
+    CardAreaComponent,
+    CoinCardComponent
   ],
   imports: [
     BrowserModule,
