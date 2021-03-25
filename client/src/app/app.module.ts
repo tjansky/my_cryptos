@@ -7,13 +7,15 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CardAreaComponent } from './portfolio/card-area/card-area.component';
 import { CoinCardComponent } from './portfolio/card-area/coin-card/coin-card.component';
 import { FormsModule } from '@angular/forms';
+import { CoinTableComponent } from './portfolio/coin-table/coin-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PortfolioComponent,
     CardAreaComponent,
-    CoinCardComponent
+    CoinCardComponent,
+    CoinTableComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,21 @@
+#cryptos-table {
+    font-size: large;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #cryptos-table td, #cryptos-table th {
+    border: 1px solid black;
+    padding: 8px;
+  }
+  
+  
+  #cryptos-table tr:hover {background-color: #ddd;}
+  
+  #cryptos-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
