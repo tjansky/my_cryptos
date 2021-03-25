@@ -1,10 +1,8 @@
-<button style="background-color: red;" (click)="onResetaddedCoinsIds()">reset test</button>
 
-<div *ngIf="addedCoinsIds.length > 0" id="card-area-container">
+<div *ngIf="addedCoins.length > 0" id="card-area-container">
 
-    <!-- depending on how many ids is in array, that many coin cards will be created -->
-    <div *ngFor="let coinId of addedCoinsIds" class="coin-card-wrapper">
-        <app-coin-card [cryptoCoinId]="coinId"></app-coin-card>
+    <div *ngFor="let cryptoCoin of addedCoins" class="coin-card-wrapper">
+        <app-coin-card [cryptoCoin]="cryptoCoin"></app-coin-card>
     </div>
     
 </div>

@@ -1,5 +1,5 @@
 <div style="background-color: lightseagreen; min-height: 350px;">
-    <table id="cryptos-table" style="border: black solid 1px; width: 100%; border-collapse: collapse;">
+    <table *ngIf="addedCoins.length > 0" id="cryptos-table" style="border: black solid 1px; width: 100%; border-collapse: collapse;">
         <tr>
             <th>#</th>
             <th>Coin</th>
@@ -13,29 +13,16 @@
             <th>Last 7 days - graph</th>
             <th></th>
         </tr>
-        <tr>
-            <td>3</td>
-            <td>Tether</td>
-            <td>USDT</td>
-            <td>$1.00</td>
-            <td>-0.5%</td>
-            <td>-0.2%</td>
-            <td>-0.8%</td>
-            <td>$105,415,925,406</td>
-            <td>$40,410,381,446</td>
-            <td>Crveno/zeleni graf</td>
-            <td><button>+</button></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Tether</td>
-            <td>USDT</td>
-            <td>$1.00</td>
-            <td>-0.5%</td>
-            <td>-0.2%</td>
-            <td>-0.8%</td>
-            <td>$105,415,925,406</td>
-            <td>$40,410,381,446</td>
+        <tr *ngFor="let coin of addedCoins; let i = index">
+            <td>{{i}}</td>
+            <td>{{coin.name}}</td>
+            <td>{{coin.symbol}}</td>
+            <td>{{coin.market_data.current_price.usd}}</td>
+            <td>nemam ovo</td>
+            <td>{{coin.market_data.price_change_percentage_24h}}</td>
+            <td>{{coin.market_data.price_change_percentage_7d}}</td>
+            <td>$105,415,925,406 (fix)</td>
+            <td>$40,410,381,446 (fix)</td>
             <td>Crveno/zeleni graf</td>
             <td><button>+</button></td>
         </tr>
