@@ -14,6 +14,7 @@ export class CoinCardComponent implements OnInit {
   constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
+    console.log("loadam coin-card componentu");
     // after component is instantiated call CoinGecko endpoint to get data about coin
     this.portfolioService.getCryptoCoinData(this.cryptoCoinId).subscribe(coinData => {
       this.cryptoCoin = coinData;

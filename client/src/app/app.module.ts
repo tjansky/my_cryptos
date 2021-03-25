@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CardAreaComponent } from './portfolio/card-area/card-area.component';
 import { CoinCardComponent } from './portfolio/card-area/coin-card/coin-card.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CoinCardComponent } from './portfolio/card-area/coin-card/coin-card.com
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
