@@ -1,4 +1,7 @@
 #card-area-container {
     background-color: lightgray;
-    min-height: 400px;
+}
+
+.coin-card-wrapper {
+    margin: 10px;
 }

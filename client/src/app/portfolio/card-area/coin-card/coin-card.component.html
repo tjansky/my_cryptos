@@ -1,6 +1,12 @@
-<div style="border: mediumvioletred solid; max-width: 130px;" *ngIf="cryptoCoin">
+<div class="coin-card" *ngIf="cryptoCoin">
     <h3>{{cryptoCoin.name}}</h3>
-    <div>{{cryptoCoin.market_data.current_price.usd | currency}}</div>
+    <h4>{{cryptoCoin.market_data.current_price.usd | currency}}</h4>
     <img src="{{cryptoCoin.image.small}}" alt="">
+    <div>Market cap: <b>$105,415,925,406</b></div>
+    <div>24h change: <b>{{cryptoCoin.market_data.price_change_percentage_24h}}%</b></div>
+    <div>7d change: <b>{{cryptoCoin.market_data.price_change_percentage_7d}}%</b></div>
+    <br>
+    <img src="../../../../assets/images/plusGraph.PNG" alt="">
+    <div><b>30 days</b></div>
 </div>
 <br>

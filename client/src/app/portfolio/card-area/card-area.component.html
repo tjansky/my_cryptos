@@ -1,7 +1,7 @@
 
-<div *ngIf="addedCoins.length > 0" id="card-area-container">
+<div *ngIf="addedCoins.length > 0" class="row" id="card-area-container">
 
-    <div *ngFor="let cryptoCoin of addedCoins" class="coin-card-wrapper">
+    <div *ngFor="let cryptoCoin of addedCoins" class="col-xs-1 text-center coin-card-wrapper">
         <app-coin-card [cryptoCoin]="cryptoCoin"></app-coin-card>
     </div>
     
