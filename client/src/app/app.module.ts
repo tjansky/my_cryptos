@@ -9,9 +9,10 @@ import { CardAreaComponent } from './portfolio/card-area/card-area.component';
 import { CoinCardComponent } from './portfolio/card-area/coin-card/coin-card.component';
 import { FormsModule } from '@angular/forms';
 import { CoinTableComponent } from './portfolio/coin-table/coin-table.component';
-import { AddCoinModalComponent, ModalContentComponent } from './shared/components/add-coin-modal/add-coin-modal.component';
+import { AddCoinModalComponent } from './shared/components/modals/add-coin-modal/add-coin-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CommonModule } from '@angular/common';
+import { AddCoinModalContentComponent } from './shared/components/modals/add-coin-modal/add-coin-modal-content/add-coin-modal-content.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { CommonModule } from '@angular/common';
     CoinCardComponent,
     CoinTableComponent,
     AddCoinModalComponent,
-    ModalContentComponent
+    AddCoinModalContentComponent
   ],
   imports: [
     CommonModule,
