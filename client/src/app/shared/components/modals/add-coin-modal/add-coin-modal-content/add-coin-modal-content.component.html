@@ -1,13 +1,16 @@
 <div class="modal-header">
-    <h4 class="modal-title pull-left">{{title}}</h4>
+    <h4 class="modal-title pull-left">Add new coin :)</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <input type="text" placeholder="Search new crypto coin">
-    <div *ngFor="let shortCoin of coinNamesAndIds$ | async">
+    <input [(ngModel)]="coinSearch" (ngModelChange)="onSearchChange(coinSearch)" type="text" name="coinSearchString" placeholder="Search new crypto coin">
+    <!-- <div *ngFor="let shortCoin of coinNamesAndIds$ | async">
     {{shortCoin.name}} <button (click)="onNewCoinAdd(shortCoin.id)" type="button">Add</button>
+    </div> -->
+    <div *ngFor="let shortCoin of searchedCoinNamesAndIds">
+        {{shortCoin.name}} <button (click)="onNewCoinAdd(shortCoin.id)" type="button">Add</button>
     </div>
   </div>
   <div class="modal-footer">

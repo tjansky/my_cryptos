@@ -11,17 +11,31 @@ import { ICoinIdentifier } from 'src/app/shared/models/ICoinIdentifier';
 })
 export class AddCoinModalContentComponent implements OnInit {
 
-  title: string;
   closeBtnName: string;
-  list: any[] = [];
 
-  coinNamesAndIds$: Observable<ICoinIdentifier[]>
+  // this prop is needed so (ngModelChange) works and we can pass event prop
+  coinSearch: string;
+
+  //coinNamesAndIds$: Observable<ICoinIdentifier[]>
+  coinNamesAndIds: ICoinIdentifier[] = [];
+  searchedCoinNamesAndIds: ICoinIdentifier[] = [];
  
   constructor(public bsModalRef: BsModalRef, private cryptoDataService: CryptoDataService) {}
  
   ngOnInit() {
     // in future this has to be cashed somehow (maybe via using service)
-    this.coinNamesAndIds$ = this.cryptoDataService.getAllCoinNamesAndIds()
+    this.cryptoDataService.getAllCoinNamesAndIds().subscribe(coins => {
+      this.coinNamesAndIds = coins;
+    });
+  }
+
+  // TODO - dont call this search logic until user stop typing for 1.5 seconds
+  // TODO - somehow make best options to come first
+  onSearchChange(event: string) {
+    console.log(this.coinSearch);
+    this.searchedCoinNamesAndIds = this.coinNamesAndIds.filter(function(el){
+      return el.name.toLowerCase().includes(event.toLowerCase());
+    })
   }
 
   onNewCoinAdd(newCoinId: string) {
@@ -29,3 +43,9 @@ export class AddCoinModalContentComponent implements OnInit {
   }
 
 }
+
+
+
+// const xznja = alligatorFacts.filter(function(el){
+//   return el.includes("test")
+// });
