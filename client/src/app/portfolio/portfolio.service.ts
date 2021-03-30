@@ -10,6 +10,7 @@ import { Observable, of, Subject } from 'rxjs';
 export class PortfolioService {
   // in future this will be retrived from db, for now fixed values
   private addedCoinsIds: string[] = ["ethereum", "bitcoin", "chainlink", "dai", "tether", "cardano"]; 
+  private newAddedCoinId = new Subject<string>();
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +25,14 @@ export class PortfolioService {
     this.addedCoinsIds.push(coinId);
     return of(coinId);
     
+  }
+
+  sendNewCoinIdSubject(newCoinId: string) {
+    this.newAddedCoinId.next(newCoinId);
+  }
+
+  getNewCoinIdSubject(): Observable<string> {
+    return this.newAddedCoinId;
   }
 
 

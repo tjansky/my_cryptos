@@ -30,24 +30,16 @@ export class PortfolioComponent implements OnInit {
       });
     });
 
-
-  }
-
-  onCoinAdd() {
-    if (this.coinIdToAdd) {
-      // after coin id is saved to db
-      this.portfolioService.addCoinIdToDb(this.coinIdToAdd).subscribe(addedCoinId => {  // !!! maybe instead of calling server for new coinid array, we just pass addedCoinId to array !!!
-        // after coinId is saved to dn, get his data nad push it to array
-        this.cryptoDataService.getCryptoCoinData(this.coinIdToAdd).subscribe(coin => {
-          // adding coin to array after we got data from api
-          this.addedCoins.push(coin);
-        }, er => {
-          console.log(er);
-        });
+    // subject that is waiting for new added coin and pushes it in addedCoins array
+    this.portfolioService.getNewCoinIdSubject().subscribe(coinId => {
+      this.cryptoDataService.getCryptoCoinData(coinId).subscribe(coin => {
+        // adding coin to array after we got data from api
+        this.addedCoins.push(coin);
+      }, er => {
+        console.log(er);
       });
-
-
-    }
+    });
   }
+
 
 }

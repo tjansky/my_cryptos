@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
 import { CryptoDataService } from 'src/app/portfolio/crypto-data.service';
+import { PortfolioService } from 'src/app/portfolio/portfolio.service';
 import { ICoinIdentifier } from 'src/app/shared/models/ICoinIdentifier';
 
 @Component({
@@ -20,7 +20,9 @@ export class AddCoinModalContentComponent implements OnInit {
   coinNamesAndIds: ICoinIdentifier[] = [];
   searchedCoinNamesAndIds: ICoinIdentifier[] = [];
  
-  constructor(public bsModalRef: BsModalRef, private cryptoDataService: CryptoDataService) {}
+  constructor(public bsModalRef: BsModalRef, 
+              private cryptoDataService: CryptoDataService,
+              private portfolioService: PortfolioService) {}
  
   ngOnInit() {
     // in future this has to be cashed somehow (maybe via using service)
@@ -39,13 +41,13 @@ export class AddCoinModalContentComponent implements OnInit {
   }
 
   onNewCoinAdd(newCoinId: string) {
-    console.log("IM ADDING TO TRACK COIN WITH ID: ", newCoinId);
+    console.log("Trying to add coin: ", newCoinId);
+    this.portfolioService.addCoinIdToDb(newCoinId).subscribe(addedCoin => {
+      console.log("coin: "+addedCoin+" was succesfuly added to db!");
+      // after id coin got in db, tell portfolio-component to fetch it from coingecko and render it to client
+      // send newCoinId using subject
+      this.portfolioService.sendNewCoinIdSubject(addedCoin);
+    });
   }
 
 }
-
-
-
-// const xznja = alligatorFacts.filter(function(el){
-//   return el.includes("test")
-// });

@@ -9,8 +9,8 @@
     <!-- <div *ngFor="let shortCoin of coinNamesAndIds$ | async">
     {{shortCoin.name}} <button (click)="onNewCoinAdd(shortCoin.id)" type="button">Add</button>
     </div> -->
-    <div *ngFor="let shortCoin of searchedCoinNamesAndIds">
-        {{shortCoin.name}} <button (click)="onNewCoinAdd(shortCoin.id)" type="button">Add</button>
+    <div style="cursor: pointer;" (click)="onNewCoinAdd(shortCoin.id)" *ngFor="let shortCoin of searchedCoinNamesAndIds">
+        <h4>{{shortCoin.name}}</h4>  
     </div>
   </div>
   <div class="modal-footer">
