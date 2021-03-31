@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ICryptoCoin } from 'src/app/shared/ICryptoCoin';
+import { ICryptoCoin } from 'src/app/shared/models/ICryptoCoin';
 import { PortfolioService } from '../portfolio.service';
 
 @Component({

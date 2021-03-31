@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICryptoCoin } from 'src/app/shared/ICryptoCoin';
+import { ICryptoCoin } from 'src/app/shared/models/ICryptoCoin';
 
 @Component({
   selector: 'app-coin-table',

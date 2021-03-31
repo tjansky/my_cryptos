@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ICryptoCoin } from '../shared/ICryptoCoin';
+import { ICryptoCoin } from '../shared/models/ICryptoCoin';
 import { ICoinIdentifier } from '../shared/models/ICoinIdentifier';
 
 @Injectable({

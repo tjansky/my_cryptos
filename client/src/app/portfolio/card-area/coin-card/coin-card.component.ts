@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICryptoCoin } from 'src/app/shared/ICryptoCoin';
+import { ICryptoCoin } from 'src/app/shared/models/ICryptoCoin';
 import { PortfolioService } from '../../portfolio.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class CoinCardComponent implements OnInit {
   constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
-    console.log("loadam coin-card componentu ", this.cryptoCoin.name);
+    //console.log("loadam coin-card componentu ", this.cryptoCoin.name);
   }
 
 }
