@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ICryptoCoin } from '../shared/models/ICryptoCoin';
 import { Observable, of, Subject } from 'rxjs';
+import { ITransaction } from '../shared/models/CoinAndTransactionsData';
 
 
 @Injectable({
@@ -19,8 +20,13 @@ export class PortfolioService {
     return of(this.addedCoinsIds.slice());
   }
 
-  getTransactionsForCoin(addedCoinId: string): Observable<any[]> {
-    return of([{id: "bla bla", amount: 20}, {id: "trans", amount: 122}]);
+  getTransactionsForCoin(addedCoinId: string): Observable<ITransaction[]> {
+    const fixedValues = [
+      {id: 'transakcija1', price: 1820, quantity: 1, fees: 0, cost: 1000, earned: 0},
+      {id: 'transakcija2', price: 1820, quantity: 1, fees: 0, cost: 1000, earned: 0}
+    ]
+
+    return of(fixedValues);
   }
 
   addCoinIdToDb(coinId: string): Observable<string> {

@@ -4,6 +4,7 @@ import { ICryptoCoin } from '../shared/models/ICryptoCoin';
 import { CryptoDataService } from './crypto-data.service';
 import { PortfolioService } from './portfolio.service';
 import { map } from 'rxjs/operators';
+import { CoinAndTransactionsData } from '../shared/models/CoinAndTransactionsData';
 
 @Component({
   selector: 'app-portfolio',
@@ -14,6 +15,8 @@ export class PortfolioComponent implements OnInit {
   coinIdToAdd: string;
   addedCoinsIds: string[] = [];
   addedCoins: ICryptoCoin[] = [];
+
+  addedCoinsAndTransactionsData: CoinAndTransactionsData[] = [];
 
   constructor(private portfolioService: PortfolioService, private cryptoDataService: CryptoDataService) { }
 
@@ -55,6 +58,7 @@ export class PortfolioComponent implements OnInit {
         combineLatest([coinData$, transactionsData$]).pipe(
           map(results => ({coinData: results[0], transactions: results[1]}))
         ).subscribe( pair => {
+
           console.log("PAIR COINDATA: ", pair.coinData.name);
           console.log("PAIR TRANSAKCIJE: ",pair.transactions);
         });
