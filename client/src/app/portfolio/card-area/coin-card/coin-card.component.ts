@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CoinAndTransactionsData } from 'src/app/shared/models/CoinAndTransactionsData';
 import { ICryptoCoin } from 'src/app/shared/models/ICryptoCoin';
 import { PortfolioService } from '../../portfolio.service';
 
@@ -8,13 +9,12 @@ import { PortfolioService } from '../../portfolio.service';
   styleUrls: ['./coin-card.component.css']
 })
 export class CoinCardComponent implements OnInit {
-  //@Input() cryptoCoinId: string;
-  @Input() cryptoCoin: ICryptoCoin;
+  @Input() addedCoinAndTrans: CoinAndTransactionsData;
 
   constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
-    //console.log("loadam coin-card componentu ", this.cryptoCoin.name);
+
   }
 
 }

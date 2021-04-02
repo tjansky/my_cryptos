@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { CoinAndTransactionsData } from 'src/app/shared/models/CoinAndTransactionsData';
 import { ICryptoCoin } from 'src/app/shared/models/ICryptoCoin';
 import { PortfolioService } from '../portfolio.service';
 
@@ -11,14 +12,14 @@ import { PortfolioService } from '../portfolio.service';
 export class CardAreaComponent implements OnInit {
   //addedCoinsIds: string[] = [];
 
-  @Input() addedCoins: ICryptoCoin[] = [];
+  @Input() addedCoinsAndTrans: CoinAndTransactionsData[] = [];
+
   subscription: Subscription;
 
   constructor(private portfolioService: PortfolioService) { }
 
 
   ngOnInit(): void {
-    console.log("initial addedCoins in card-area: ", this.addedCoins);
    }
 
 }
