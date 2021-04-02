@@ -21,6 +21,7 @@ export class PortfolioComponent implements OnInit {
   constructor(private portfolioService: PortfolioService, private cryptoDataService: CryptoDataService) { }
 
   ngOnInit(): void {
+    this.getCoinAndTransactionData();
     //get IDs from added coins
     this.portfolioService.getAddedCoinsIds().subscribe(coinIds => {
       this.addedCoinsIds = coinIds;
@@ -59,8 +60,31 @@ export class PortfolioComponent implements OnInit {
           map(results => ({coinData: results[0], transactions: results[1]}))
         ).subscribe( pair => {
 
-          console.log("PAIR COINDATA: ", pair.coinData.name);
-          console.log("PAIR TRANSAKCIJE: ",pair.transactions);
+          const transAndCoinData = new CoinAndTransactionsData(
+            pair.coinData.id,
+            pair.coinData.symbol,
+            pair.coinData.name,
+            pair.coinData.image.thumb,
+            pair.coinData.image.small,
+            pair.coinData.image.large,
+            pair.coinData.market_data.current_price.usd,
+            pair.coinData.market_data.market_cap.usd,
+            pair.coinData.market_data.price_change_percentage_24h,
+            pair.coinData.market_data.price_change_percentage_7d,
+            pair.coinData.market_data.price_change_percentage_14d,
+            pair.coinData.market_data.price_change_percentage_30d,
+            pair.transactions
+          )
+          if(pair.coinData.symbol == "eth") {
+            console.log(transAndCoinData);
+            console.log("Holdings: ", transAndCoinData.holdings);
+            console.log("Holdings Value: ", transAndCoinData.holdingsValueUsd);
+            console.log("Total Profit(Loss): ", transAndCoinData.profitLoss);
+          }
+            
+
+          //console.log("PAIR COINDATA: ", pair.coinData.name);
+          //console.log("PAIR TRANSAKCIJE: ",pair.transactions);
         });
       });
     });

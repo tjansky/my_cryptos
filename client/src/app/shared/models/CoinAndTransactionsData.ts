@@ -59,6 +59,35 @@ export class CoinAndTransactionsData {
         });
         return totalHoldingsValue-totalHoldingsCost;
     }
+
+    constructor(id: string, 
+                symbol: string, 
+                name: string, 
+                thumbImage: string, 
+                smallImage: string,
+                largeImage: string, 
+                currentPriceUsd: number, 
+                marketCapUsd: number,
+                priceChange24hPer: number, 
+                priceChange7dPer: number, 
+                priceChange14dPer: number,
+                priceChange30dPer: number,
+                transactions: ITransaction[]
+                ) {
+        this.id = id,
+        this.symbol = symbol,
+        this.name = name,
+        this.thumbImage = thumbImage,
+        this.smallImage = smallImage,
+        this.largeImage = largeImage,
+        this.currentPriceUsd = currentPriceUsd,
+        this.marketCapUsd = marketCapUsd,
+        this.priceChange24hPercentage = priceChange24hPer,
+        this.priceChange7dPercentage = priceChange7dPer,
+        this.priceChange14dPercentage = priceChange14dPer,
+        this.priceChange30dPercentage = priceChange30dPer,
+        this.transactions = transactions
+    }
     
 }
 
