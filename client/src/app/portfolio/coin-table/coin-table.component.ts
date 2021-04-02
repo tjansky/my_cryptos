@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CoinAndTransactionsData } from 'src/app/shared/models/CoinAndTransactionsData';
 import { ICryptoCoin } from 'src/app/shared/models/ICryptoCoin';
 
 @Component({
@@ -7,12 +8,12 @@ import { ICryptoCoin } from 'src/app/shared/models/ICryptoCoin';
   styleUrls: ['./coin-table.component.css']
 })
 export class CoinTableComponent implements OnInit {
-  @Input() addedCoins: ICryptoCoin[] = [];
+  @Input() addedCoinsAndTrans: CoinAndTransactionsData[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log("addedCoins in coin-table: ", this.addedCoins);
+    console.log("TABLE: ", this.addedCoinsAndTrans)
   }
 
 }

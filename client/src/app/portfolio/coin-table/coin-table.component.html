@@ -1,5 +1,6 @@
+
 <div>
-    <table *ngIf="addedCoins.length > 0" id="cryptos-table" style="border: black solid 1px; width: 100%; border-collapse: collapse;">
+    <table *ngIf="addedCoinsAndTrans.length > 0" id="cryptos-table" style="border: black solid 1px; width: 100%; border-collapse: collapse;">
         <tr>
             <th>#</th>
             <th>Coin</th>
@@ -11,19 +12,21 @@
             <th>24h Volume</th>
             <th>Market Cap</th>
             <th>Last 7 days - graph</th>
+            <th>Holdings</th>
             <th></th>
         </tr>
-        <tr *ngFor="let coin of addedCoins; let i = index">
+        <tr *ngFor="let coinAndTrans of addedCoinsAndTrans; let i = index">
             <td>{{i}}</td>
-            <td>{{coin.name}} <img src="{{coin.image.thumb}}" alt=""></td>
-            <td>{{coin.symbol | uppercase}}</td>
-            <td>{{coin.market_data.current_price.usd | currency}}</td>
+            <td>{{coinAndTrans.name}} <img src="{{coinAndTrans.thumbImage}}" alt=""></td>
+            <td>{{coinAndTrans.symbol | uppercase}}</td>
+            <td>{{coinAndTrans.currentPriceUsd | currency}}</td>
             <td>nemam ovo</td>
-            <td>{{coin.market_data.price_change_percentage_24h}}</td>
-            <td>{{coin.market_data.price_change_percentage_7d}}</td>
-            <td>$105,415,925,406 (fix)</td>
+            <td>{{coinAndTrans.priceChange24hPercentage}}</td>
+            <td>{{coinAndTrans.priceChange7dPercentage}}</td>
+            <td>{{coinAndTrans.marketCapUsd | currency}}</td>
             <td>$40,410,381,446 (fix)</td>
             <td><img src="../../../../assets/images/plusGraph.PNG" alt=""></td>
+            <td>{{coinAndTrans.holdings}} = {{coinAndTrans.holdingsValueUsd | currency}}</td>
             <td><button>+</button></td>
         </tr>
     </table>
