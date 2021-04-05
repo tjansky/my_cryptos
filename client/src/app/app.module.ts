@@ -13,6 +13,7 @@ import { AddCoinModalComponent } from './shared/components/modals/add-coin-modal
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CommonModule } from '@angular/common';
 import { AddCoinModalContentComponent } from './shared/components/modals/add-coin-modal/add-coin-modal-content/add-coin-modal-content.component';
+import { PortfolioOverviewComponent } from './portfolio/portfolio-overview/portfolio-overview.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddCoinModalContentComponent } from './shared/components/modals/add-coi
     CoinCardComponent,
     CoinTableComponent,
     AddCoinModalComponent,
-    AddCoinModalContentComponent
+    AddCoinModalContentComponent,
+    PortfolioOverviewComponent
   ],
   imports: [
     CommonModule,
