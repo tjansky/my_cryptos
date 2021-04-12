@@ -105,4 +105,42 @@ export class PortfolioComponent implements OnInit {
   }
 
 
+
+
+  // TESTING SOME THINGS
+  changeCurrentPriceETH(){
+    let x = this.addedCoinsAndTransactionsData.find(x => x.id == 'ethereum');
+    console.log(x);
+    x.currentPriceUsd = 100;
+  }
+
+  add1ETHHolding(){
+    let x = this.addedCoinsAndTransactionsData.find(x => x.id == 'ethereum');
+    x.transactions.push({id: 'dsadsad', price: 1800, quantity: 1, fees: 0, cost: 1300, earned:0})
+  }
+
+  addNewCoinTrans(){
+    const transAndCoinData = new CoinAndTransactionsData(
+      'pair.coinData.id',
+      'pair.coinData.symbol',
+      'pair.coinData.name',
+      'pair.coinData.image.thumb',
+      'pair.coinData.image.small',
+      'pair.coinData.image.large',
+      1333,
+      111111111,
+      2,
+      2,
+      2,
+      2,
+      [
+        {id: 'dsadsad', price: 1800, quantity: 1, fees: 0, cost: 1300, earned:0},
+        {id: 'dsadsad', price: 1800, quantity: 1, fees: 0, cost: 1300, earned:0},
+        {id: 'dsadsad', price: 1800, quantity: 1, fees: 0, cost: 1300, earned:0},
+        {id: 'dsadsad', price: 1800, quantity: 1, fees: 0, cost: 1300, earned:0}
+      ]
+    )
+    this.addedCoinsAndTransactionsData.push(transAndCoinData);
+  }
+
 }

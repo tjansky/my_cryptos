@@ -31,9 +31,25 @@
 <!-- Crypto cards area -->
 <app-card-area [addedCoinsAndTrans]="addedCoinsAndTransactionsData"></app-card-area>
 
-
-
-<br>
+<br> <br>
+<div class="row">
+    <div class="col">
+        <button (click)="changeCurrentPriceETH()" class="btn btn-danger">
+            Change current price eth
+        </button>
+    </div>
+    <div class="col">
+        <button (click)="add1ETHHolding()" class="btn btn-danger">
+            Add 1 ETH holding
+        </button>
+    </div>
+    <div (click)="addNewCoinTrans()" class="col">
+        <button class="btn btn-danger">
+            Add new coin and trans
+        </button>
+    </div>
+</div>
+<br><br>
 
 <!-- Crypto coin table area -->
 <app-coin-table [addedCoinsAndTrans]="addedCoinsAndTransactionsData"></app-coin-table>
