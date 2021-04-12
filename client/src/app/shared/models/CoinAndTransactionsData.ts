@@ -14,6 +14,11 @@ export class CoinAndTransactionsData {
     priceChange14dPercentage: number;
     priceChange30dPercentage: number;
 
+    priceChange24hUsd: number;
+    priceChange7dUsd: number;
+    priceChange14dUsd: number;
+    priceChange30dUsd: number;
+
     transactions: ITransaction[];
 
     private _holdings: number;
@@ -72,6 +77,10 @@ export class CoinAndTransactionsData {
                 priceChange7dPer: number, 
                 priceChange14dPer: number,
                 priceChange30dPer: number,
+                priceChange24hUsd: number,
+                priceChange7dUsd: number,
+                priceChange14dUsd: number,
+                priceChange30dUsd: number,
                 transactions: ITransaction[]
                 ) {
         this.id = id,
@@ -86,6 +95,12 @@ export class CoinAndTransactionsData {
         this.priceChange7dPercentage = priceChange7dPer,
         this.priceChange14dPercentage = priceChange14dPer,
         this.priceChange30dPercentage = priceChange30dPer,
+        
+        this.priceChange24hUsd = priceChange24hUsd,
+        this.priceChange7dUsd = priceChange7dUsd,
+        this.priceChange14dUsd = priceChange14dUsd,
+        this.priceChange30dUsd = priceChange30dUsd
+
         this.transactions = transactions
     }
     

@@ -84,6 +84,10 @@ export class PortfolioComponent implements OnInit {
         pair.coinData.market_data.price_change_percentage_7d,
         pair.coinData.market_data.price_change_percentage_14d,
         pair.coinData.market_data.price_change_percentage_30d,
+        pair.coinData.market_data.price_change_24h_in_currency.usd,
+        pair.coinData.market_data.price_change_percentage_7d_in_currency.usd,
+        pair.coinData.market_data.price_change_percentage_14d_in_currency.usd,
+        pair.coinData.market_data.price_change_percentage_30d_in_currency.usd,
         pair.transactions
       )
       // if (pair.coinData.symbol == "eth") {
@@ -133,6 +137,10 @@ export class PortfolioComponent implements OnInit {
       2,
       2,
       2,
+      111,
+      111,
+      2323,
+      23232,
       [
         {id: 'dsadsad', price: 1800, quantity: 1, fees: 0, cost: 1300, earned:0},
         {id: 'dsadsad', price: 1800, quantity: 1, fees: 0, cost: 1300, earned:0},
