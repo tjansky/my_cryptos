@@ -15,6 +15,8 @@ import { CommonModule } from '@angular/common';
 import { AddCoinModalContentComponent } from './shared/components/modals/add-coin-modal/add-coin-modal-content/add-coin-modal-content.component';
 import { PortfolioOverviewComponent } from './portfolio/portfolio-overview/portfolio-overview.component';
 import { TotalBalancePipe } from './shared/pipes/total-balance.pipe';
+import { Change24hPipe } from './shared/pipes/change24h.pipe';
+import { TotalProfitLossPipe } from './shared/pipes/total-profit-loss.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { TotalBalancePipe } from './shared/pipes/total-balance.pipe';
     AddCoinModalComponent,
     AddCoinModalContentComponent,
     PortfolioOverviewComponent,
-    TotalBalancePipe
+    TotalBalancePipe,
+    Change24hPipe,
+    TotalProfitLossPipe
   ],
   imports: [
     CommonModule,
