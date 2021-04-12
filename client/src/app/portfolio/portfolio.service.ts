@@ -10,7 +10,7 @@ import { ITransaction } from '../shared/models/CoinAndTransactionsData';
 })
 export class PortfolioService {
   // in future this will be retrived from db, for now fixed values
-  private addedCoinsIds: string[] = ["ethereum", "bitcoin", "chainlink", "dai", "tether", "cardano"]; 
+  private addedCoinsIds: string[] = ["ethereum"]; 
   private newAddedCoinId = new Subject<string>();
 
   constructor(private http: HttpClient) { }
@@ -22,8 +22,7 @@ export class PortfolioService {
 
   getTransactionsForCoin(addedCoinId: string): Observable<ITransaction[]> {
     const fixedValues = [
-      {id: 'transakcija1', price: 1820, quantity: 1, fees: 0, cost: 1000, earned: 0},
-      {id: 'transakcija2', price: 1820, quantity: 1, fees: 0, cost: 1000, earned: 0}
+      {id: 'transakcija1', price: 1820, quantity: 1, fees: 0, cost: 1000, earned: 0}
     ]
 
     return of(fixedValues);

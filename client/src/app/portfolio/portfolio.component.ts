@@ -120,7 +120,7 @@ export class PortfolioComponent implements OnInit {
 
   add1ETHHolding(){
     let x = this.addedCoinsAndTransactionsData.find(x => x.id == 'ethereum');
-    x.transactions.push({id: 'dsadsad', price: 1800, quantity: 1, fees: 0, cost: 1300, earned:0})
+    x.transactions.push({id: 'dsadsad', price: 1800, quantity: 1, fees: 0, cost: 1000, earned:0})
   }
 
   addNewCoinTrans(){
