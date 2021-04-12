@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col">
             <button class="btn btn-success btn-lg">
-                Total Balance: {{totalBalance | currency}}
+                Total Balance: {{addedCoinsAndTrans | totalBalance | currency }}
             </button>
         </div>
         <div class="col">
@@ -15,6 +15,6 @@
             <button class="btn btn-success btn-lg">
                 Profit: {{totalProfitLost | currency}}
             </button>
-        </div>
+        </div>        
     </div>
 </div> 

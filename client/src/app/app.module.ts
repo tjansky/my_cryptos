@@ -14,6 +14,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CommonModule } from '@angular/common';
 import { AddCoinModalContentComponent } from './shared/components/modals/add-coin-modal/add-coin-modal-content/add-coin-modal-content.component';
 import { PortfolioOverviewComponent } from './portfolio/portfolio-overview/portfolio-overview.component';
+import { TotalBalancePipe } from './shared/pipes/total-balance.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PortfolioOverviewComponent } from './portfolio/portfolio-overview/portf
     CoinTableComponent,
     AddCoinModalComponent,
     AddCoinModalContentComponent,
-    PortfolioOverviewComponent
+    PortfolioOverviewComponent,
+    TotalBalancePipe
   ],
   imports: [
     CommonModule,

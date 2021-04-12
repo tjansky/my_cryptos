@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CoinAndTransactionsData } from 'src/app/shared/models/CoinAndTransactionsData';
 
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./portfolio-overview.component.css']
 })
 export class PortfolioOverviewComponent implements OnInit {
-
+@Input() addedCoinsAndTrans: CoinAndTransactionsData[] = [];
 
   totalBalance: number = 1;
   portfolioChange24h: number = 1;
