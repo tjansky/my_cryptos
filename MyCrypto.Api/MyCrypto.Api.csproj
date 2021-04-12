@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyCrypto.Core\MyCrypto.Core.csproj" />
+    <ProjectReference Include="..\MyCrypto.Services\MyCrypto.Services.csproj" />
+    <ProjectReference Include="..\MyCrypto.Data\MyCrypto.Data.csproj" />
+  </ItemGroup>
+
+</Project>
