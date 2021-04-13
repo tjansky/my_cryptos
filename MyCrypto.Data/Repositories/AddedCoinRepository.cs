@@ -24,5 +24,16 @@ namespace MyCrypto.Data.Repositories
         {
             return await _db.AddedCoins.ToListAsync();
         }
+
+        public async Task DeleteAddedCoinAsync(AddedCoin addedCoin)
+        {
+            _db.AddedCoins.Remove(addedCoin);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<AddedCoin> GetAddedCoinByIdAsync(int coinId)
+        {
+            return await _db.AddedCoins.FindAsync(coinId);
+        }
     }
 }

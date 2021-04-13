@@ -29,6 +29,22 @@ namespace MyCrypto.Api.Controllers
             return await _addedCoinRepo.AddAddedCoinAsync(addedCoin);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteAddedCoin(int id)
+        {
+            if (id == 0)
+                return BadRequest();
+
+            AddedCoin addedCoin = await _addedCoinRepo.GetAddedCoinByIdAsync(id);
+
+            if (addedCoin == null)
+                return NotFound();
+
+            await _addedCoinRepo.DeleteAddedCoinAsync(addedCoin);
+
+            return NoContent();
+        }
+
 
     }
 }
