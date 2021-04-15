@@ -41,14 +41,15 @@ export class AddCoinModalContentComponent implements OnInit {
   }
 
 
-  // THIS NOT WORKING CURRENTLY 
   onNewCoinAdd(newCoinId: string) {
-    console.log("Trying to add coin: ", newCoinId);
-    this.portfolioService.addCoinIdToDb(newCoinId).subscribe(addedCoin => {
-      console.log("coin: "+addedCoin+" was succesfuly added to db!");
-      // after id coin got in db, tell portfolio-component to fetch it from coingecko and render it to client
-      // send newCoinId using subject
-      this.portfolioService.sendNewCoinIdSubject(addedCoin);
+    this.portfolioService.addCoinIdToDb(newCoinId).subscribe(coinIsAdded => {
+      if (coinIsAdded == 1) {
+        // if it was added in db send it to portfolio component
+        this.portfolioService.sendNewCoinIdSubject(newCoinId);
+      } else {
+        alert("Coin wasnt added");
+      }
+      
     });
   }
 

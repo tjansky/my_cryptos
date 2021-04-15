@@ -24,7 +24,7 @@ namespace MyCrypto.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> InsertAddedCoin([FromForm] AddedCoin addedCoin)
+        public async Task<ActionResult<int>> InsertAddedCoin([FromBody] AddedCoin addedCoin)
         {
             return await _addedCoinRepo.AddAddedCoinAsync(addedCoin);
         }

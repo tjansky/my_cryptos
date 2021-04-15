@@ -23,31 +23,11 @@ export class PortfolioComponent implements OnInit {
   ngOnInit(): void {
     this.getCoinAndTransactionDataForAddedCoins();
 
-    // -----------OLD LOGIC WILL PROLLY NEED----------------
-    // //get IDs from added coins
-    // this.portfolioService.getAddedCoinsIds().subscribe(coinIds => {
-    //   this.addedCoinsIds = coinIds;
-    //   // after we got coinIds we can call api for coin data for each coin
-    //   this.addedCoinsIds.forEach(cId => {
-    //     this.cryptoDataService.getCryptoCoinData(cId).subscribe(coin => {
-    //       // adding coin to array after we got data from api
-    //       this.addedCoins.push(coin);
-    //     }, er => {
-    //       console.log(er);
-    //     });
-    //   });
-    // });
 
     // // subject that is waiting for new added coin and pushes it in addedCoins array
-    // this.portfolioService.getNewCoinIdSubject().subscribe(coinId => {
-    //   this.cryptoDataService.getCryptoCoinData(coinId).subscribe(coin => {
-    //     // adding coin to array after we got data from api
-    //     this.addedCoins.push(coin);
-    //   }, er => {
-    //     console.log(er);
-    //   });
-    // });
-    // ------------------------------------------------------------
+    this.portfolioService.getNewCoinIdSubject().subscribe(coinId => {
+      this.getCoinAndTransactionData(coinId)
+    });
   }
 
 

@@ -15,12 +15,16 @@ export class PortfolioService {
 
   constructor(private http: HttpClient) { }
 
-
+  // get coins form db
   getAddedCoinsIds(): Observable<DbCoin[]>{
     return this.http.get<DbCoin[]>('https://localhost:5001/AddedCoin');
-
-    //return of(this.addedCoinsIds.slice());
   }
+
+  // insert coin in db
+  addCoinIdToDb(coinId: string): Observable<number> {
+    return this.http.post<number>('https://localhost:5001/AddedCoin', {coinNameid: coinId});
+  }
+
 
   getTransactionsForCoin(addedCoinId: string): Observable<ITransaction[]> {
     const fixedValues = [
@@ -30,14 +34,8 @@ export class PortfolioService {
     return of(fixedValues);
   }
 
-  addCoinIdToDb(coinId: string): Observable<string> {
-    // add new coinId to array of added coin ids
-    // in future this will be inserted in db
-    //this.addedCoinsIds.push(coinId);
-    return of(coinId);
-    
-  }
-
+  
+  
   sendNewCoinIdSubject(newCoinId: string) {
     this.newAddedCoinId.next(newCoinId);
   }
