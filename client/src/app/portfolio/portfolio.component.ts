@@ -22,15 +22,11 @@ export class PortfolioComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCoinAndTransactionDataForAddedCoins();
-
-
     // // subject that is waiting for new added coin and pushes it in addedCoins array
     this.portfolioService.getNewCoinIdSubject().subscribe(coinId => {
       this.getCoinAndTransactionData(coinId)
     });
   }
-
-
 
   getCoinAndTransactionDataForAddedCoins() {
     this.portfolioService.getAddedCoinsIds().subscribe(coinList => {
@@ -39,7 +35,6 @@ export class PortfolioComponent implements OnInit {
       });
     });
   }
-
 
   // fetch data from coingecko api and our api combine responses and push it into array
   private getCoinAndTransactionData(coinId) {
@@ -70,27 +65,14 @@ export class PortfolioComponent implements OnInit {
         pair.coinData.market_data.price_change_percentage_30d_in_currency.usd,
         pair.transactions
       )
-      // if (pair.coinData.symbol == "eth") {
-      //   console.log(transAndCoinData);
-      //   console.log("Holdings: ", transAndCoinData.holdings);
-      //   console.log("Holdings Value: ", transAndCoinData.holdingsValueUsd);
-      //   console.log("Total Profit(Loss): ", transAndCoinData.profitLoss);
-      // }
 
       this.addedCoinsAndTransactionsData.push(transAndCoinData);
-      //!!!!!
-      // at this point we should next subject and let portfolio-overview and other components of holding change
-      // but somehow we need to know which coin got transactions updated
-      //!!!!!
-
-      //console.log("PAIR COINDATA: ", pair.coinData.name);
-      //console.log("PAIR TRANSAKCIJE: ",pair.transactions);
     });
   }
 
 
 
-
+//----------------------------------
   // TESTING SOME THINGS
   changeCurrentPriceETH(){
     let x = this.addedCoinsAndTransactionsData.find(x => x.id == 'ethereum');
