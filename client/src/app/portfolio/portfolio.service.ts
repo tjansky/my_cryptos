@@ -3,21 +3,23 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { ICryptoCoin } from '../shared/models/ICryptoCoin';
 import { Observable, of, Subject } from 'rxjs';
 import { ITransaction } from '../shared/models/CoinAndTransactionsData';
+import { DbCoin } from '../shared/models/DbCoin';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PortfolioService {
-  // in future this will be retrived from db, for now fixed values
-  private addedCoinsIds: string[] = ["ethereum"]; 
+  //private addedCoinsIds: string[] = ["ethereum"]; 
   private newAddedCoinId = new Subject<string>();
 
   constructor(private http: HttpClient) { }
 
-  // in future this will be retrived from db, for now fixed values
-  getAddedCoinsIds(): Observable<string[]>{
-    return of(this.addedCoinsIds.slice());
+
+  getAddedCoinsIds(): Observable<DbCoin[]>{
+    return this.http.get<DbCoin[]>('https://localhost:5001/AddedCoin');
+
+    //return of(this.addedCoinsIds.slice());
   }
 
   getTransactionsForCoin(addedCoinId: string): Observable<ITransaction[]> {
@@ -31,7 +33,7 @@ export class PortfolioService {
   addCoinIdToDb(coinId: string): Observable<string> {
     // add new coinId to array of added coin ids
     // in future this will be inserted in db
-    this.addedCoinsIds.push(coinId);
+    //this.addedCoinsIds.push(coinId);
     return of(coinId);
     
   }

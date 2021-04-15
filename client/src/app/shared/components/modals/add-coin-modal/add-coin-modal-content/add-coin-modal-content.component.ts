@@ -40,6 +40,8 @@ export class AddCoinModalContentComponent implements OnInit {
     })
   }
 
+
+  // THIS NOT WORKING CURRENTLY 
   onNewCoinAdd(newCoinId: string) {
     console.log("Trying to add coin: ", newCoinId);
     this.portfolioService.addCoinIdToDb(newCoinId).subscribe(addedCoin => {

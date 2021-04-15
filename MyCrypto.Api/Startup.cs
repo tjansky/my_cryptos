@@ -31,6 +31,17 @@ namespace MyCrypto.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                          builder =>
+                          {
+                              builder.WithOrigins("http://localhost:4200")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                          });
+            });
+
             services.AddControllers();
             services.AddDbContext<MyCryptoContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection"), y => y.MigrationsAssembly("MyCrypto.Data")));
             //services.AddDbContext<MyMusicDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"), x => x.MigrationsAssembly("MyMusic.Data")));
@@ -56,6 +67,8 @@ namespace MyCrypto.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

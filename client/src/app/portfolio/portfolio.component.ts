@@ -53,9 +53,9 @@ export class PortfolioComponent implements OnInit {
 
 
   getCoinAndTransactionDataForAddedCoins() {
-    this.portfolioService.getAddedCoinsIds().subscribe(coinIds => {
-      coinIds.forEach(id => {
-        this.getCoinAndTransactionData(id);
+    this.portfolioService.getAddedCoinsIds().subscribe(coinList => {
+      coinList.forEach(coin => {
+        this.getCoinAndTransactionData(coin.coinNameId);
       });
     });
   }
