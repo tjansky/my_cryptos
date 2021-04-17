@@ -18,6 +18,7 @@ import { TotalBalancePipe } from './shared/pipes/total-balance.pipe';
 import { Change24hPipe } from './shared/pipes/change24h.pipe';
 import { TotalProfitLossPipe } from './shared/pipes/total-profit-loss.pipe';
 import { TransactionsDetailsComponent } from './transactions/transactions-details.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TransactionsDetailsComponent } from './transactions/transactions-detail
     HttpClientModule,
     FormsModule,
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
