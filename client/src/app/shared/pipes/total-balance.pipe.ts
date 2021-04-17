@@ -15,7 +15,9 @@ export class TotalBalancePipe implements PipeTransform {
     
     let totalBalance = 0;
     value.forEach(x => {
-      totalBalance += x.holdingsValueUsd;
+      if(x.holdingsValueUsd){
+        totalBalance += x.holdingsValueUsd;
+      };
     })
 
     return totalBalance;

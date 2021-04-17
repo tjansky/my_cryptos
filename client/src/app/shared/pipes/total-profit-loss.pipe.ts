@@ -10,7 +10,9 @@ export class TotalProfitLossPipe implements PipeTransform {
   transform(value: CoinAndTransactionsData[], ...args: unknown[]): unknown {
     let totalProfitLoss = 0;
     value.forEach(x => {
-      totalProfitLoss += x.profitLoss;
+      if(x.profitLoss){
+        totalProfitLoss += x.profitLoss;
+      };
     });
 
     return totalProfitLoss;
