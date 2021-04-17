@@ -13,7 +13,6 @@ export class CryptoDataService {
 
   // get coin details
   getCryptoCoinData(coinId: string){
-    console.log("CALLING COINGECKO API");
     return this.http.get<ICryptoCoin>(
       "https://api.coingecko.com/api/v3/coins/"+coinId+"?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false");
   }

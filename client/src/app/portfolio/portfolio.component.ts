@@ -12,23 +12,29 @@ import { CoinAndTransactionsData } from '../shared/models/CoinAndTransactionsDat
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
-  coinIdToAdd: string;
-  addedCoinsIds: string[] = [];
-  addedCoins: ICryptoCoin[] = [];
 
   addedCoinsAndTransactionsData: CoinAndTransactionsData[] = [];
 
   constructor(private portfolioService: PortfolioService, private cryptoDataService: CryptoDataService) { }
 
   ngOnInit(): void {
+    // initial load of added coins and transactions
     this.getCoinAndTransactionDataForAddedCoins();
-    // // subject that is waiting for new added coin and pushes it in addedCoins array
+
+    // subject that is waiting for new added coin and pushes it in addedCoins array
     this.portfolioService.getNewCoinIdSubject().subscribe(coinId => {
       this.getCoinAndTransactionData(coinId)
     });
+
+    // subject that removes deleted CoinAndTrans object from array
+    this.portfolioService.getDeletedCoinId().subscribe(deletedCoinId => {
+      // remove deleted coin from array
+      this.addedCoinsAndTransactionsData = this.addedCoinsAndTransactionsData.filter(coin => coin.idName !== deletedCoinId);
+    });
   }
 
-  getCoinAndTransactionDataForAddedCoins() {
+  // method that retrives all data for all addedCoins
+  private getCoinAndTransactionDataForAddedCoins() {
     this.portfolioService.getAddedCoinsIds().subscribe(coinList => {
       coinList.forEach(coin => {
         this.getCoinAndTransactionData(coin.coinNameId);
@@ -75,13 +81,13 @@ export class PortfolioComponent implements OnInit {
 //----------------------------------
   // TESTING SOME THINGS
   changeCurrentPriceETH(){
-    let x = this.addedCoinsAndTransactionsData.find(x => x.id == 'ethereum');
+    let x = this.addedCoinsAndTransactionsData.find(x => x.idName == 'ethereum');
     console.log(x);
     x.currentPriceUsd = 100;
   }
 
   add1ETHHolding(){
-    let x = this.addedCoinsAndTransactionsData.find(x => x.id == 'ethereum');
+    let x = this.addedCoinsAndTransactionsData.find(x => x.idName == 'ethereum');
     x.transactions.push({id: 'dsadsad', price: 1800, quantity: 1, fees: 0, cost: 1000, earned:0})
   }
 

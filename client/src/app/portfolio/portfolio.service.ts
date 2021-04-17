@@ -10,8 +10,8 @@ import { DbCoin } from '../shared/models/DbCoin';
   providedIn: 'root'
 })
 export class PortfolioService {
-  //private addedCoinsIds: string[] = ["ethereum"]; 
   private newAddedCoinId = new Subject<string>();
+  private deletedCoinId = new Subject<string>();
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +25,11 @@ export class PortfolioService {
     return this.http.post<number>('https://localhost:5001/AddedCoin', {coinNameid: coinId});
   }
 
+  // delete coin in db
+  deleteCoinInDb(id: number) {
+    return this.http.delete('https://localhost:5001/AddedCoin/' + id);
+  }
+
 
   getTransactionsForCoin(addedCoinId: string): Observable<ITransaction[]> {
     const fixedValues = [
@@ -35,7 +40,7 @@ export class PortfolioService {
   }
 
   
-  
+  // add coin subject methods
   sendNewCoinIdSubject(newCoinId: string) {
     this.newAddedCoinId.next(newCoinId);
   }
@@ -44,7 +49,14 @@ export class PortfolioService {
     return this.newAddedCoinId;
   }
 
+  // delete coin subject methods
+  sendDeletedCoinId(deletedCoinId: string) {
+    this.deletedCoinId.next(deletedCoinId)
+  }
 
+  getDeletedCoinId(): Observable<string> {
+    return this.deletedCoinId;
+  }
   
 
 }

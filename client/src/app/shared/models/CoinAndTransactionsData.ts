@@ -1,5 +1,5 @@
 export class CoinAndTransactionsData {
-    id: string;
+    idName: string;
     symbol: string;
     name: string;
 
@@ -65,7 +65,7 @@ export class CoinAndTransactionsData {
         return totalHoldingsValue-totalHoldingsCost;
     }
 
-    constructor(id: string, 
+    constructor(idName: string, 
                 symbol: string, 
                 name: string, 
                 thumbImage: string, 
@@ -83,7 +83,7 @@ export class CoinAndTransactionsData {
                 priceChange30dUsd: number,
                 transactions: ITransaction[]
                 ) {
-        this.id = id,
+        this.idName = idName,
         this.symbol = symbol,
         this.name = name,
         this.thumbImage = thumbImage,

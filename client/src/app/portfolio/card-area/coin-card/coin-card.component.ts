@@ -17,4 +17,12 @@ export class CoinCardComponent implements OnInit {
 
   }
 
+  onCoinDelete(id){
+    this.portfolioService.deleteCoinInDb(id).subscribe(x => {
+      console.log("Coin deleted ", id);
+
+      this.portfolioService.sendDeletedCoinId(id);
+    })
+  }
+
 }
