@@ -17,6 +17,7 @@ import { PortfolioOverviewComponent } from './portfolio/portfolio-overview/portf
 import { TotalBalancePipe } from './shared/pipes/total-balance.pipe';
 import { Change24hPipe } from './shared/pipes/change24h.pipe';
 import { TotalProfitLossPipe } from './shared/pipes/total-profit-loss.pipe';
+import { TransactionsDetailsComponent } from './transactions/transactions-details.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TotalProfitLossPipe } from './shared/pipes/total-profit-loss.pipe';
     PortfolioOverviewComponent,
     TotalBalancePipe,
     Change24hPipe,
-    TotalProfitLossPipe
+    TotalProfitLossPipe,
+    TransactionsDetailsComponent
   ],
   imports: [
     CommonModule,
