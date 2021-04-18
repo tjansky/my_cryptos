@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyCrypto.Api.DTOs;
+using MyCrypto.Api.Services;
 using MyCrypto.Core.IRepositories;
 using MyCrypto.Core.Models;
 
@@ -14,13 +15,15 @@ namespace MyCrypto.Api.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAppUserRepository _userRepo;
-        public AccountController(IAppUserRepository userRepo)
+        private readonly ITokenService _tokenService;
+        public AccountController(IAppUserRepository userRepo, ITokenService tokenService)
         {
+            this._tokenService = tokenService;
             this._userRepo = userRepo;
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<AppUser>> Register(RegisterUserDto registerUser)
+        public async Task<ActionResult<UserDto>> Register(RegisterUserDto registerUser)
         {
             if (string.IsNullOrEmpty(registerUser.Username) || string.IsNullOrEmpty(registerUser.Password))
                 return BadRequest();
@@ -37,11 +40,15 @@ namespace MyCrypto.Api.Controllers
             // save user to db
             await _userRepo.InsertAppUser(user);
 
-            return Ok(user);
+            return new UserDto
+            {
+                Username = user.UserName,
+                Token = _tokenService.CreateToken(user)
+            };
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<AppUser>> Login([FromQuery] LoginUserDto loginUser)
+        public async Task<ActionResult<UserDto>> Login([FromQuery] LoginUserDto loginUser)
         {
             var user = await _userRepo.GetUserByName(loginUser.Username);
 
@@ -53,10 +60,14 @@ namespace MyCrypto.Api.Controllers
 
             for (int i = 0; i < computeHash.Length; i++)
             {
-                if(computeHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
+                if (computeHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
             }
 
-            return user;
+            return new UserDto
+            {
+                Username = user.UserName,
+                Token = _tokenService.CreateToken(user)
+            };
         }
 
     }
