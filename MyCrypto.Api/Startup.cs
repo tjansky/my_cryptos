@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MyCrypto.Api.Services;
 using MyCrypto.Core.IRepositories;
 using MyCrypto.Data;
 using MyCrypto.Data.Repositories;
@@ -46,6 +47,7 @@ namespace MyCrypto.Api
             services.AddDbContext<MyCryptoContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection"), y => y.MigrationsAssembly("MyCrypto.Data")));
             //services.AddDbContext<MyMusicDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"), x => x.MigrationsAssembly("MyMusic.Data")));
 
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IAddedCoinRepository, AddedCoinRepository>();
             services.AddScoped<IAppUserRepository, AppUserRepository>();
             
