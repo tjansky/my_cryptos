@@ -40,6 +40,24 @@ namespace MyCrypto.Api.Controllers
             return Ok(user);
         }
 
+        [HttpPost("login")]
+        public async Task<ActionResult<AppUser>> Login([FromQuery] LoginUserDto loginUser)
+        {
+            var user = await _userRepo.GetUserByName(loginUser.Username);
+
+            if (user == null) return Unauthorized("Invalid Username");
+
+            using var hmac = new HMACSHA512(user.PasswordSalt);
+
+            var computeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginUser.Password));
+
+            for (int i = 0; i < computeHash.Length; i++)
+            {
+                if(computeHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
+            }
+
+            return user;
+        }
 
     }
 }
