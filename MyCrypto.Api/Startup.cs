@@ -47,6 +47,7 @@ namespace MyCrypto.Api
             //services.AddDbContext<MyMusicDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"), x => x.MigrationsAssembly("MyMusic.Data")));
 
             services.AddScoped<IAddedCoinRepository, AddedCoinRepository>();
+            services.AddScoped<IAppUserRepository, AppUserRepository>();
             
             services.AddSwaggerGen(c =>
             {
