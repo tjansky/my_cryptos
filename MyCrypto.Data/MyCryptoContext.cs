@@ -10,5 +10,6 @@ namespace MyCrypto.Data
         }
 
         public DbSet<AddedCoin> AddedCoins { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
     }
 }
