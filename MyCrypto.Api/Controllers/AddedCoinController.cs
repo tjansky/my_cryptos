@@ -46,13 +46,16 @@ namespace MyCrypto.Api.Controllers
             return await _addedCoinRepo.AddAddedCoinAsync(new AddedCoin{CoinNameId = addedCoinId, AppUserId = user.Id});
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteAddedCoin(string id)
+        [HttpDelete("{coinId}")]
+        public async Task<ActionResult> DeleteAddedCoin(string coinId)
         {
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(coinId))
                 return BadRequest();
 
-            AddedCoin addedCoin = await _addedCoinRepo.GetAddedCoinByIdAsync(id);
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _userRepo.GetUserByName(username);
+
+            AddedCoin addedCoin = await _addedCoinRepo.GetAddedCoinByIdAsync(coinId, user.Id);
 
             if (addedCoin == null)
                 return NotFound();

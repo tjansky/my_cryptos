@@ -32,9 +32,9 @@ namespace MyCrypto.Data.Repositories
             await _db.SaveChangesAsync();
         }
 
-        public async Task<AddedCoin> GetAddedCoinByIdAsync(string coinId)
+        public async Task<AddedCoin> GetAddedCoinByIdAsync(string coinId, int userId)
         {
-            return await _db.AddedCoins.FirstAsync(x=> x.CoinNameId == coinId);
+            return await _db.AddedCoins.FirstAsync(x=> x.CoinNameId == coinId && x.AppUserId == userId);
         }
     }
 }

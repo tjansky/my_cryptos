@@ -11,6 +11,6 @@ namespace MyCrypto.Core.IRepositories
 
         Task DeleteAddedCoinAsync(AddedCoin addedCoin);
 
-        Task<AddedCoin> GetAddedCoinByIdAsync(string coinId);
+        Task<AddedCoin> GetAddedCoinByIdAsync(string coinId, int userId);
     }
 }
