@@ -6,7 +6,7 @@ namespace MyCrypto.Core.IRepositories
 {
     public interface IAddedCoinRepository
     {
-        Task<List<AddedCoin>> GetAddedCoinsAsync();
+        Task<List<AddedCoin>> GetAddedCoinsAsync(int userId);
         Task<int> AddAddedCoinAsync(AddedCoin addedCoin);
 
         Task DeleteAddedCoinAsync(AddedCoin addedCoin);

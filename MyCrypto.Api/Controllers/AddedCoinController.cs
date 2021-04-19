@@ -1,33 +1,49 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyCrypto.Core.IRepositories;
 using MyCrypto.Core.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using MyCrypto.Api.DTOs;
+using System.Linq;
 
 namespace MyCrypto.Api.Controllers
 {
 
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class AddedCoinController : ControllerBase
     {
         private readonly IAddedCoinRepository _addedCoinRepo;
-        public AddedCoinController(IAddedCoinRepository addedCoinRepo)
+        private readonly IAppUserRepository _userRepo;
+        public AddedCoinController(IAddedCoinRepository addedCoinRepo, IAppUserRepository userRepo)
         {
             _addedCoinRepo = addedCoinRepo;
+            this._userRepo = userRepo;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<AddedCoin>>> GetAllAddedCoins()
+        public async Task<ActionResult<List<AddedCoinsDto>>> GetAllAddedCoins()
         {
-            return await _addedCoinRepo.GetAddedCoinsAsync();
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _userRepo.GetUserByName(username);
+
+            var addedCoins = await _addedCoinRepo.GetAddedCoinsAsync(user.Id);
+
+            // TODO -  use AUTOMAPPER
+            List<AddedCoinsDto> addedCoinsDto = addedCoins.Select(x => new AddedCoinsDto{AppUserId = x.AppUserId, CoinNameId = x.CoinNameId}).ToList();
+            return addedCoinsDto;
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> InsertAddedCoin([FromBody] AddedCoin addedCoin)
+        public async Task<ActionResult<int>> InsertAddedCoin([FromQuery] string addedCoinId)
         {
-            return await _addedCoinRepo.AddAddedCoinAsync(addedCoin);
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _userRepo.GetUserByName(username);
+
+            return await _addedCoinRepo.AddAddedCoinAsync(new AddedCoin{CoinNameId = addedCoinId, AppUserId = user.Id});
         }
 
         [HttpDelete("{id}")]

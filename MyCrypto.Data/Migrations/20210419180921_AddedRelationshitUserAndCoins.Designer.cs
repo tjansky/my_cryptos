@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyCrypto.Data;
 
 namespace MyCrypto.Data.Migrations
 {
     [DbContext(typeof(MyCryptoContext))]
-    partial class MyCryptoContextModelSnapshot : ModelSnapshot
+    [Migration("20210419180921_AddedRelationshitUserAndCoins")]
+    partial class AddedRelationshitUserAndCoins
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

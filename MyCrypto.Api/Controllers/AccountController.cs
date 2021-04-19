@@ -23,7 +23,7 @@ namespace MyCrypto.Api.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<UserDto>> Register(RegisterUserDto registerUser)
+        public async Task<ActionResult<UserDto>> Register([FromQuery] RegisterUserDto registerUser)
         {
             if (string.IsNullOrEmpty(registerUser.Username) || string.IsNullOrEmpty(registerUser.Password))
                 return BadRequest();

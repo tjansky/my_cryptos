@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyCrypto.Core.IRepositories;
@@ -20,9 +21,9 @@ namespace MyCrypto.Data.Repositories
             return await _db.SaveChangesAsync();
         }
 
-        public async Task<List<AddedCoin>> GetAddedCoinsAsync()
+        public async Task<List<AddedCoin>> GetAddedCoinsAsync(int userId)
         {
-            return await _db.AddedCoins.ToListAsync();
+            return await _db.AddedCoins.Where(x => x.AppUserId == userId).ToListAsync();
         }
 
         public async Task DeleteAddedCoinAsync(AddedCoin addedCoin)
