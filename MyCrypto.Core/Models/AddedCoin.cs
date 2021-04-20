@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace MyCrypto.Core.Models
 {
     public class AddedCoin
@@ -7,5 +9,6 @@ namespace MyCrypto.Core.Models
         public string CoinNameId { get; set; }  
 
         public virtual AppUser AppUser { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

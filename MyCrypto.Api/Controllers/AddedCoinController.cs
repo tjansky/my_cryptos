@@ -24,6 +24,7 @@ namespace MyCrypto.Api.Controllers
             this._userRepo = userRepo;
         }
 
+        // get all coins user follows
         [HttpGet]
         public async Task<ActionResult<List<AddedCoinsDto>>> GetAllAddedCoins()
         {
@@ -37,6 +38,7 @@ namespace MyCrypto.Api.Controllers
             return addedCoinsDto;
         }
 
+        // insert coin that user starts following
         [HttpPost]
         public async Task<ActionResult<int>> InsertAddedCoin([FromQuery] string addedCoinId)
         {
@@ -46,6 +48,7 @@ namespace MyCrypto.Api.Controllers
             return await _addedCoinRepo.AddAddedCoinAsync(new AddedCoin{CoinNameId = addedCoinId, AppUserId = user.Id});
         }
 
+        // delete coin user follows
         [HttpDelete("{coinId}")]
         public async Task<ActionResult> DeleteAddedCoin(string coinId)
         {
