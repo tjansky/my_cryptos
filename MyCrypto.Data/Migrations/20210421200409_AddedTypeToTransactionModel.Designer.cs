@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyCrypto.Data;
 
 namespace MyCrypto.Data.Migrations
 {
     [DbContext(typeof(MyCryptoContext))]
-    partial class MyCryptoContextModelSnapshot : ModelSnapshot
+    [Migration("20210421200409_AddedTypeToTransactionModel")]
+    partial class AddedTypeToTransactionModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +63,7 @@ namespace MyCrypto.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("AddedCoinId")
+                    b.Property<int?>("AddedCoinId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Cost")
@@ -71,6 +73,9 @@ namespace MyCrypto.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Fee")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IdAddedCoin")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Price")
@@ -104,9 +109,7 @@ namespace MyCrypto.Data.Migrations
                 {
                     b.HasOne("MyCrypto.Core.Models.AddedCoin", "AddedCoin")
                         .WithMany("Transactions")
-                        .HasForeignKey("AddedCoinId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AddedCoinId");
 
                     b.Navigation("AddedCoin");
                 });

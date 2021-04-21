@@ -53,6 +53,7 @@ namespace MyCrypto.Api
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IAddedCoinRepository, AddedCoinRepository>();
             services.AddScoped<IAppUserRepository, AppUserRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
             
             services.AddSwaggerGen(c =>
             {
