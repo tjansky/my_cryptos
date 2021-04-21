@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyCrypto.Api.DTOs;
 using MyCrypto.Core.IRepositories;
@@ -9,7 +10,7 @@ using MyCrypto.Core.Models;
 
 namespace MyCrypto.Api.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class TransactionsController : ControllerBase
@@ -36,7 +37,16 @@ namespace MyCrypto.Api.Controllers
             List<Transaction> transactions = await _transRepo.GetTransactionsAsync(addedCoin.Id, user.Id);
 
             // TODO -  use AUTOMAPPER
-            List<TransactionDto> transactionsDto = transactions.Select(x => new TransactionDto{ }).ToList();
+            List<TransactionDto> transactionsDto = transactions.Select(x => new TransactionDto{
+                Id = x.Id,
+                AddedCoinId = x.AddedCoinId,
+                Type = x.Type,
+                Price = x.Price,
+                Quantity = x.Quantity,
+                Fee = x.Fee,
+                Cost = x.Cost,
+                Earned = x.Earned
+             }).ToList();
             return transactionsDto;
         }
 
