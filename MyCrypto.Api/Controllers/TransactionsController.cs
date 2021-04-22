@@ -51,5 +51,30 @@ namespace MyCrypto.Api.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<ActionResult<int>> InsertTransaction([FromForm] Transaction newTrans)
+        {
+            // add validations for valid model
+
+            return await _transRepo.AddTransactionAsync(newTrans);
+        }
+
+
+        [HttpDelete("{transId}")]
+        public async Task<ActionResult> DeleteTransaction(int transId)
+        {
+            if (transId == 0)
+                return BadRequest("Transaction id cannot be null");
+
+            Transaction trans = await _transRepo.GetTransactionByIdAsync(transId);
+
+            if (trans == null)
+                return NotFound("Transaction with "+transId+" was not found");
+
+            await _transRepo.DeleteTransactionAsync(trans);
+
+            return NoContent();
+        }
+
     }
 }
