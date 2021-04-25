@@ -23,7 +23,7 @@ namespace MyCrypto.Data.Repositories
 
         public async Task<List<AddedCoin>> GetAddedCoinsAsync(int userId)
         {
-            return await _db.AddedCoins.Where(x => x.AppUserId == userId).ToListAsync();
+            return await _db.AddedCoins.Where(x => x.AppUserId == userId).Include(y => y.Transactions).ToListAsync();
         }
 
         public async Task DeleteAddedCoinAsync(AddedCoin addedCoin)

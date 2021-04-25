@@ -1,0 +1,21 @@
+<div class="navigation-container">
+    <div>
+        <button [routerLink]="['/coin-cards']" class="btn btn-danger">Coin Cards</button>
+    </div>
+    <div>
+        <button [routerLink]="['/coin-table']" class="btn btn-danger">Coin table</button>
+    </div>
+    <div>
+        <button [routerLink]="['/transactions/ethereum']" class="btn btn-danger">Eth Transactions</button>
+    </div>
+    <br>
+    <div>
+        <button (click)="onCoinAdd('ethereum')" class="btn btn-success">Add coin</button>
+    </div>
+    <div>
+        <button class="btn btn-success">Add transaction for eth</button>
+    </div>
+    <div>
+        <button class="btn btn-success">Delete coin</button>
+    </div>
+</div>

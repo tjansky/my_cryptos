@@ -31,10 +31,16 @@ namespace MyCrypto.Api.Controllers
             var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var user = await _userRepo.GetUserByName(username);
 
-            var addedCoins = await _addedCoinRepo.GetAddedCoinsAsync(user.Id);
+            List<AddedCoin> addedCoins = await _addedCoinRepo.GetAddedCoinsAsync(user.Id);
 
             // TODO -  use AUTOMAPPER
-            List<AddedCoinsDto> addedCoinsDto = addedCoins.Select(x => new AddedCoinsDto{AppUserId = x.AppUserId, CoinNameId = x.CoinNameId}).ToList();
+            List<AddedCoinsDto> addedCoinsDto = addedCoins.Select(x => new AddedCoinsDto{
+                AppUserId = x.AppUserId, 
+                CoinNameId = x.CoinNameId, 
+                Transactions = convertToTransDto(x.Transactions)
+                }).ToList();
+
+
             return addedCoinsDto;
         }
 
@@ -68,6 +74,21 @@ namespace MyCrypto.Api.Controllers
             return NoContent();
         }
 
+
+        private List<TransactionDto> convertToTransDto(ICollection<Transaction> transCol){
+            List<Transaction> transList = transCol.ToList();
+
+            return transList.Select(x => new TransactionDto{
+                AddedCoinId = x.AddedCoinId,
+                Type = x.Type,
+                Price = x.Price,
+                Quantity = x.Quantity,
+                Fee = x.Fee,
+                Cost = x.Cost,
+                Earned = x.Earned,
+                Id = x.Id
+            }).ToList();
+        }
 
     }
 }
