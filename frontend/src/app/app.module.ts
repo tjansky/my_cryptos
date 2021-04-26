@@ -10,6 +10,7 @@ import { CoinCardsComponent } from './coin-cards/coin-cards.component';
 import { CoinTransactionsComponent } from './coin-transactions/coin-transactions.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { PortfolioStatsComponent } from './portfolio-stats/portfolio-stats.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     CoinCardsComponent,
     CoinTransactionsComponent,
     AccountSettingsComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    PortfolioStatsComponent
   ],
   imports: [
     BrowserModule,
