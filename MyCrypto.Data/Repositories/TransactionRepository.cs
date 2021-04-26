@@ -15,10 +15,11 @@ namespace MyCrypto.Data.Repositories
             _db = db;
         }
 
-        public async Task<int> AddTransactionAsync(Transaction transaction)
+        public async Task<Transaction> AddTransactionAsync(Transaction transaction)
         {
             _db.Transactions.Add(transaction);
-            return await _db.SaveChangesAsync();
+             await _db.SaveChangesAsync();
+             return transaction;
         }
 
         public async Task DeleteTransactionAsync(Transaction transaction)

@@ -30,7 +30,9 @@ export class AppComponent {
     });
 
     // subject that listens for added transaction and updates coin object
-
+    this.appStateService.getAddedTransaction().subscribe(addedTrans => {
+      this.coinsWithTransList.find(c => c.idName == 'ethereum').transactions.push(addedTrans);
+    });
 
     // subject that listens for deleted coin and removes it from list
 

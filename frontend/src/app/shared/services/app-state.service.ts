@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { TransactionDto } from '../dtos/TransactionDto';
 import { Coin } from '../models/Coin';
 
 @Injectable({
@@ -8,6 +9,8 @@ import { Coin } from '../models/Coin';
 })
 export class AppStateService {
   private newAddedCoinId = new Subject<string>();
+  private newAddedTransaction = new Subject<TransactionDto>();
+
   private coinListSource = new BehaviorSubject<Coin[]>(null);
 
   constructor() { }
@@ -27,6 +30,15 @@ export class AppStateService {
 
   getNewCoinIdSubject(): Observable<string> {
     return this.newAddedCoinId.asObservable();
+  }
+
+  // add transaction subject methods
+  sendAddedTransaction(addedTrans: TransactionDto){
+    this.newAddedTransaction.next(addedTrans);
+  }
+
+  getAddedTransaction(): Observable<TransactionDto>{
+    return this.newAddedTransaction.asObservable();
   }
 
 }

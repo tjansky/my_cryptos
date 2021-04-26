@@ -7,7 +7,7 @@ namespace MyCrypto.Core.IRepositories
     public interface ITransactionRepository
     {
         Task<List<Transaction>> GetTransactionsAsync(int coinId, int userId);
-        Task<int> AddTransactionAsync(Transaction transaction);
+        Task<Transaction> AddTransactionAsync(Transaction transaction);
 
         Task DeleteTransactionAsync(Transaction transaction);
 

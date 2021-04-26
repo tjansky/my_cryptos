@@ -52,11 +52,22 @@ namespace MyCrypto.Api.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<int>> InsertTransaction([FromForm] Transaction newTrans)
+        public async Task<ActionResult<TransactionDto>> InsertTransaction([FromBody] Transaction newTrans)
         {
             // add validations for valid model
 
-            return await _transRepo.AddTransactionAsync(newTrans);
+            Transaction addedTrans =  await _transRepo.AddTransactionAsync(newTrans);
+
+            return new TransactionDto{
+                Id = addedTrans.Id, 
+                AddedCoinId = addedTrans.AddedCoinId,
+                Type = addedTrans.Type,
+                Price = addedTrans.Price,
+                Quantity = addedTrans.Quantity,
+                Fee = addedTrans.Fee,
+                Cost = addedTrans.Cost,
+                Earned = addedTrans.Earned
+            };
         }
 
 
