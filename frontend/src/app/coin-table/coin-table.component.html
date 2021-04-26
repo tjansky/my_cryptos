@@ -28,7 +28,7 @@
             <!-- <td><img src="../../../../assets/images/plusGraph.PNG" alt=""></td> -->
             <td>{{coinAndTrans.holdings}} = {{coinAndTrans.holdingsValueUsd | currency}}</td>
             <td>
-                <button>=</button>
+                <button (click)="onTransactionDetails(coinAndTrans.idName)">=</button>
                 <button>X</button>
             </td>
         </tr>

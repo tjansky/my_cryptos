@@ -20,4 +20,8 @@ export class CoinTableComponent implements OnInit {
     
   }
 
+  onTransactionDetails(coinNameId: string){
+    this.appStateService.navigateToTransactionDetails(coinNameId);
+  }
+
 }

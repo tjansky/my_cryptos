@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { TransactionDto } from '../dtos/TransactionDto';
@@ -13,7 +14,11 @@ export class AppStateService {
 
   private coinListSource = new BehaviorSubject<Coin[]>(null);
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  navigateToTransactionDetails(coinNameId: string){
+    this.router.navigateByUrl('/transactions/'+coinNameId);
+  }
 
   getCoinList() {
     return this.coinListSource.asObservable();
