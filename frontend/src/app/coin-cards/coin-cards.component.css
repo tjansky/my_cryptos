@@ -1,0 +1,9 @@
+.cards-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.coin-card{
+    border: 1px solid black;
+}

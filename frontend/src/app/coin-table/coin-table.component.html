@@ -1,8 +1,36 @@
+<br> <br>
 <div>
-    <h2>Coin Table</h2>
-    <ul>
-        <li *ngFor="let coin of coinsWithTransList">
-            {{coin.name}}
-        </li>
-    </ul>
+    <table *ngIf="(coinsWithTransList != null && coinsWithTransList.length > 0)" id="cryptos-table" style="border: black solid 1px; width: 100%; border-collapse: collapse;">
+        <tr>
+            <th>#</th>
+            <th>Coin</th>
+            <th>Tag</th>
+            <th>Price</th>
+            <th>1h</th>
+            <th>24h</th>
+            <th>7d</th>
+            <th>24h Volume</th>
+            <th>Market Cap</th>
+            <th>Last 7 days - graph</th>
+            <th>Holdings</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let coinAndTrans of coinsWithTransList; let i = index">
+            <td>{{i}}</td>
+            <td>{{coinAndTrans.name}} <img src="{{coinAndTrans.thumbImage}}" alt=""></td>
+            <td>{{coinAndTrans.symbol | uppercase}}</td>
+            <td>{{coinAndTrans.currentPriceUsd | currency}}</td>
+            <td>nemam ovo</td>
+            <td>{{coinAndTrans.priceChange24hPercentage}}</td>
+            <td>{{coinAndTrans.priceChange7dPercentage}}</td>
+            <td>{{coinAndTrans.marketCapUsd | currency}}</td>
+            <td>$40,410,381,446 (fix)</td>
+            <!-- <td><img src="../../../../assets/images/plusGraph.PNG" alt=""></td> -->
+            <td>{{coinAndTrans.holdings}} = {{coinAndTrans.holdingsValueUsd | currency}}</td>
+            <td>
+                <button>=</button>
+                <button>X</button>
+            </td>
+        </tr>
+    </table>
 </div>

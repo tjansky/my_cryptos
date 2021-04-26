@@ -1,8 +1,18 @@
-<div>
-    <h2>Coin Cards</h2>
-    <ul>
-        <li *ngFor="let coin of coinsWithTransList">
-            {{coin.name}}
-        </li>
-    </ul>
+
+<div class="cards-wrapper">
+    <div *ngFor="let coin of coinsWithTransList" class="coin-card">
+        <h3>{{coin.name}}</h3>
+        <h4>{{coin.currentPriceUsd | currency}}</h4>
+        <img src="{{coin.smallImage}}" alt="">
+        <div>Market cap: <b>$105,415,925,406</b></div>
+        <div>24h change: <b>{{coin.priceChange24hPercentage}}%</b></div>
+        <div>7d change: <b>{{coin.priceChange7dPercentage}}%</b></div>
+        <br>
+        <!-- <img src="../../../../assets/images/plusGraph.PNG" alt=""> -->
+        <div><b>30 days</b></div>
+        <button>Details</button>
+        <button>Delete</button>
+    </div>
 </div>
+
+<br>
