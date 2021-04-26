@@ -38,5 +38,9 @@ export class ApiHelperService {
     return this.http.post<TransactionDto>('https://localhost:5001/Transactions', trans, {headers: headers_object})
   }
 
+  deleteAddedCoin(coinNameId: string){
+    var headers_object = new HttpHeaders().set("Authorization", "Bearer " + this.token);
+    return this.http.delete<AddedCoinIdDto>('https://localhost:5001/AddedCoin/'+coinNameId,{headers: headers_object})
+  }
   
 }

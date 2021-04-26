@@ -29,7 +29,7 @@
             <td>{{coinAndTrans.holdings}} = {{coinAndTrans.holdingsValueUsd | currency}}</td>
             <td>
                 <button (click)="onTransactionDetails(coinAndTrans.idName)">=</button>
-                <button>X</button>
+                <button (click)="onAddedCoinDelete(coinAndTrans.idName)">X</button>
             </td>
         </tr>
     </table>

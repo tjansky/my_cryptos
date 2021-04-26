@@ -57,7 +57,7 @@ namespace MyCrypto.Api.Controllers
             // add validations for valid model
 
             Transaction addedTrans =  await _transRepo.AddTransactionAsync(newTrans);
-
+            
             return new TransactionDto{
                 Id = addedTrans.Id, 
                 AddedCoinId = addedTrans.AddedCoinId,

@@ -56,7 +56,7 @@ namespace MyCrypto.Api.Controllers
 
         // delete coin user follows
         [HttpDelete("{coinId}")]
-        public async Task<ActionResult> DeleteAddedCoin(string coinId)
+        public async Task<ActionResult<AddedCoin>> DeleteAddedCoin(string coinId)
         {
             if (string.IsNullOrEmpty(coinId))
                 return BadRequest();
@@ -70,8 +70,7 @@ namespace MyCrypto.Api.Controllers
                 return NotFound();
 
             await _addedCoinRepo.DeleteAddedCoinAsync(addedCoin);
-
-            return NoContent();
+            return Ok(addedCoin);
         }
 
 
