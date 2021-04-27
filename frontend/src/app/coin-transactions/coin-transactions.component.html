@@ -1,11 +1,14 @@
-<div *ngIf="coinWithTrans">
-    <h3>{{coinWithTrans.name}}</h3>
-    <h4>{{coinWithTrans.currentPriceUsd}}</h4>
-    <br>
-    <div>Transactions:</div>
-    <ul>
-        <li *ngFor="let trans of coinWithTrans.transactions">
-            quantity: {{trans.quantity}}
-        </li>
-    </ul>
+<div>
+<app-add-transaction-modal></app-add-transaction-modal>
+    <div *ngIf="coinWithTrans">
+        <h3>{{coinWithTrans.name}}</h3>
+        <h4>{{coinWithTrans.currentPriceUsd}}</h4>
+        <br>
+        <div>Transactions:</div>
+        <ul>
+            <li *ngFor="let trans of coinWithTrans.transactions">
+                quantity: {{trans.quantity}}
+            </li>
+        </ul>
+    </div>
 </div>
