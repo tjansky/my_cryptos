@@ -13,6 +13,7 @@ export class AppStateService {
   private newAddedCoinId = new Subject<string>();
   private newAddedTransaction = new Subject<TransactionDto>();
   private deletedAddedCoin = new Subject<AddedCoinIdDto>();
+  private deletedTransId = new Subject<number>();
 
   private coinListSource = new BehaviorSubject<Coin[]>(null);
 
@@ -55,5 +56,14 @@ export class AppStateService {
 
   getDeletedCoin(): Observable<AddedCoinIdDto> {
     return this.deletedAddedCoin.asObservable();
+  }
+
+  // delete trans subject methods
+  sendDeletedTransId(deletedTransId: number){
+    this.deletedTransId.next(deletedTransId);
+  }
+
+  getDeletedTransactionId(): Observable<number>{
+    return this.deletedTransId.asObservable();
   }
 }

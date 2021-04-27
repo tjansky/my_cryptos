@@ -42,7 +42,12 @@ export class AppComponent {
     });
 
     // subject that listens for deleted transaction and updates coin object
-
+    this.appStateService.getDeletedTransactionId().subscribe(deletedTransId => {
+      this.coinsWithTransList.forEach(c => {
+        c.transactions = c.transactions.filter(t => t.id != deletedTransId);
+      });
+    });
+    this.appStateService.updateCoinList(this.coinsWithTransList);
   }
 
 

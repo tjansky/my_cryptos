@@ -5,10 +5,31 @@
         <h4>{{coinWithTrans.currentPriceUsd}}</h4>
         <br>
         <div>Transactions:</div>
-        <ul>
-            <li *ngFor="let trans of coinWithTrans.transactions">
-                quantity: {{trans.quantity}}
-            </li>
-        </ul>
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Fees</th>
+                <th>Cost</th>
+                <th>Earned</th>
+                <th>PNL</th>
+                <th>Actions</th>
+            </tr>
+            <tr *ngFor="let trans of coinWithTrans.transactions">
+                <td>{{trans.type}}</td>
+                <td>{{trans.price}}</td>
+                <td>{{trans.quantity}}</td>
+                <td>{{trans.fee}}</td>
+                <td>{{trans.cost}}</td>
+                <td>{{trans.earned}}</td>
+                <td></td>
+                <td>
+                    <button (click)="onTransactionDelete(trans.id)" class="btn btn-danger btn-sm">X</button>
+                </td>
+            </tr>
+            
+        </table>
+        
     </div>
 </div>

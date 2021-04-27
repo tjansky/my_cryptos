@@ -72,7 +72,7 @@ namespace MyCrypto.Api.Controllers
 
 
         [HttpDelete("{transId}")]
-        public async Task<ActionResult> DeleteTransaction(int transId)
+        public async Task<ActionResult<int>> DeleteTransaction(int transId)
         {
             if (transId == 0)
                 return BadRequest("Transaction id cannot be null");
@@ -84,7 +84,7 @@ namespace MyCrypto.Api.Controllers
 
             await _transRepo.DeleteTransactionAsync(trans);
 
-            return NoContent();
+            return Ok(transId);
         }
 
     }
