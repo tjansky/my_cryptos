@@ -10,7 +10,8 @@
   <div class="modal-body">
     <div>Search for coin you want follow</div>
     <div>
-        <input type="text">
+        <input [(ngModel)]="coinNameSearch" name="coinNameSearch" type="text">
     </div>
+    <button (click)="onAddCoin()">add</button>
   </div>
 </ng-template>

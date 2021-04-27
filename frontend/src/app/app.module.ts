@@ -14,6 +14,7 @@ import { PortfolioStatsComponent } from './portfolio-stats/portfolio-stats.compo
 import { AddCoinModalComponent } from './shared/modals/add-coin-modal/add-coin-modal.component';
 import { AddTransactionModalComponent } from './shared/modals/add-transaction-modal/add-transaction-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
