@@ -31,7 +31,7 @@ export class AppComponent {
 
     // subject that listens for added transaction and updates coin object
     this.appStateService.getAddedTransaction().subscribe(addedTrans => {
-      this.coinsWithTransList.find(c => c.idName == 'ethereum').transactions.push(addedTrans);
+      this.coinsWithTransList.find(c => c.idName == addedTrans.addedCoinNameId).transactions.push(addedTrans);
       this.appStateService.updateCoinList(this.coinsWithTransList);
     });
 

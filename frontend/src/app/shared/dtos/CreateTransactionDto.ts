@@ -1,5 +1,5 @@
 export interface CreateTransactionDto{
-    addedCoinId: number,
+    addedCoinId: string,
     type: number,
     price: number,
     quantity: number,

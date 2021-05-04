@@ -26,7 +26,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
   onTransactionAdd(coinNameId: string){
-    let createTrans: CreateTransactionDto = {addedCoinId: 66, type: 1, price: 2000, quantity: 1, fee: 0, cost: 2000, earned: 0}
+    let createTrans: CreateTransactionDto = {addedCoinId: 'ethereum', type: 1, price: 2000, quantity: 1, fee: 0, cost: 2000, earned: 0}
     this.apiHelperService.addTransaction(createTrans).subscribe(res => {
       if (res != null) {
         // send new trans to coin list via subject

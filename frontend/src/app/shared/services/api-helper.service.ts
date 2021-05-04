@@ -21,7 +21,7 @@ export class ApiHelperService {
 
 
   constructor(private http: HttpClient) { }
-  token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJMb3JlbmEiLCJuYmYiOjE2MTk0NjI3MTEsImV4cCI6MTYyMDA2NzUxMSwiaWF0IjoxNjE5NDYyNzExfQ.S46Iixf_xETAe3gMX8SVltScu1GMq4S4VZjB05r3vYj76qHRGMOXoGvR-gTHIO1cWWcUtVH_qfRrxo8kp7KpIg'
+  token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJMb3JlbmEiLCJuYmYiOjE2MjAxNDQzNzIsImV4cCI6MTYyMDc0OTE3MiwiaWF0IjoxNjIwMTQ0MzcyfQ.PEIHl5TmyKykMWPqbp-2YADaKsmiLr5LwXDqE2Nualzwh0eA7oEFNgV8bMf0oZgM7NVrSMh9XKE-2Gk12ykKcQ'
 
   getAddedCoinsIds(){
     var headers_object = new HttpHeaders().set("Authorization", "Bearer " + this.token);

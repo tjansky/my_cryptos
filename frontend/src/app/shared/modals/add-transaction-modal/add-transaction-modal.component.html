@@ -10,7 +10,22 @@
   <div class="modal-body">
     <div>Add new transaction</div>
     <div>
-        <input type="text">
+        <div class="row">
+          <div>
+            <button (click)="onFormSelection(1)">Buy</button>
+          </div>
+          <div>
+            <button (click)="onFormSelection(2)">Sell</button>
+          </div>
+          <div>
+            <button (click)="onFormSelection(3)">Transfer</button>
+          </div>
+        </div>
+        <div>
+          <app-buy-form [coin]="coin" *ngIf="activeForm == 1"></app-buy-form>
+          <app-sell-form *ngIf="activeForm == 2"></app-sell-form>
+          <app-transfer-form *ngIf="activeForm == 3"></app-transfer-form>
+        </div>
     </div>
   </div>
 </ng-template>

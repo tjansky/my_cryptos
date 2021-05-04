@@ -1,0 +1,21 @@
+<div>
+    <form [formGroup]="buyForm" (ngSubmit)="onSubmit(buyForm)">
+        <div>
+            <label for="">Total Spent</label>
+            <input formControlName="totalSpent" type="number">
+        </div>
+        <div>
+            <label for="">Quantity</label>
+            <input formControlName="quantity" type="number">
+        </div>
+        <div>
+            <label for="">Price Per Coin</label>
+            <div></div>
+        </div>
+        <div>
+            <label for="">Fee</label>
+            <input formControlName="fee" type="number" value=0>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</div>

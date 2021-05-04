@@ -52,10 +52,25 @@ namespace MyCrypto.Api.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<TransactionDto>> InsertTransaction([FromBody] Transaction newTrans)
+        public async Task<ActionResult<TransactionDto>> InsertTransaction([FromBody] CreateTransactionIdStringDto newTransData)
         {
             // add validations for valid model
 
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _userRepo.GetUserByName(username);
+
+            //get added coin of user with addedCoinNameID
+            AddedCoin addedCoin = await _addedCoinRepo.GetAddedCoinByIdAsync(newTransData.AddedCoinId, user.Id);
+
+            Transaction newTrans = new Transaction{
+                AddedCoinId = addedCoin.Id,
+                Type = newTransData.Type,
+                Price = newTransData.Price,
+                Quantity = newTransData.Quantity,
+                Fee = newTransData.Fee,
+                Cost = newTransData.Cost,
+                Earned = newTransData.Earned
+            };
             Transaction addedTrans =  await _transRepo.AddTransactionAsync(newTrans);
             
             return new TransactionDto{
@@ -66,7 +81,8 @@ namespace MyCrypto.Api.Controllers
                 Quantity = addedTrans.Quantity,
                 Fee = addedTrans.Fee,
                 Cost = addedTrans.Cost,
-                Earned = addedTrans.Earned
+                Earned = addedTrans.Earned,
+                AddedCoinNameId = newTransData.AddedCoinId
             };
         }
 

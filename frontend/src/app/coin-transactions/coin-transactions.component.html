@@ -1,5 +1,5 @@
 <div>
-<app-add-transaction-modal></app-add-transaction-modal>
+<app-add-transaction-modal [coin]="coinWithTrans"></app-add-transaction-modal>
     <div *ngIf="coinWithTrans">
         <h3>{{coinWithTrans.name}}</h3>
         <h4>{{coinWithTrans.currentPriceUsd}}</h4>

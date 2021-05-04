@@ -14,7 +14,10 @@ import { PortfolioStatsComponent } from './portfolio-stats/portfolio-stats.compo
 import { AddCoinModalComponent } from './shared/modals/add-coin-modal/add-coin-modal.component';
 import { AddTransactionModalComponent } from './shared/modals/add-transaction-modal/add-transaction-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BuyFormComponent } from './shared/modals/add-transaction-modal/buy-form/buy-form.component';
+import { SellFormComponent } from './shared/modals/add-transaction-modal/sell-form/sell-form.component';
+import { TransferFormComponent } from './shared/modals/add-transaction-modal/transfer-form/transfer-form.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +30,18 @@ import { FormsModule } from '@angular/forms';
     NavigationBarComponent,
     PortfolioStatsComponent,
     AddCoinModalComponent,
-    AddTransactionModalComponent
+    AddTransactionModalComponent,
+    BuyFormComponent,
+    SellFormComponent,
+    TransferFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

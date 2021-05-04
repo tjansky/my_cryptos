@@ -6,5 +6,6 @@ export interface TransactionDto{
     quantity: number,
     fee: number,
     cost: number,
-    earned: number
+    earned: number,
+    addedCoinNameId: string
 }
