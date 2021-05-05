@@ -37,11 +37,12 @@ export class BuyFormComponent implements OnInit {
       fee: form.value.fee,
       earned: 0
     };
+
     console.log(newTrans);
+
+    // insert buy transaction to db and send it to other components
     this.apiHelperService.addTransaction(newTrans).subscribe(res => {
       if (res != null) {
-        // send new trans to coin list via subject
-        // TODO - will have to send coinNAMEID with transactiondto
         this.appStateService.sendAddedTransaction(res);
         console.log(res);
       } else {

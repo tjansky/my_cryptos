@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { timer } from 'rxjs';
 import { Coin } from './shared/models/Coin';
 import { ApiHelperService } from './shared/services/api-helper.service';
 import { AppStateService } from './shared/services/app-state.service';
@@ -48,6 +49,12 @@ export class AppComponent {
       });
     });
     this.appStateService.updateCoinList(this.coinsWithTransList);
+
+    // interval that gets coin data with price changes and updates changes
+    timer(5000, 60000).subscribe(x => {
+      this.getUpdatedCoinsData();
+      this.appStateService.updateCoinList(this.coinsWithTransList);
+    });
   }
 
 
@@ -80,4 +87,24 @@ export class AppComponent {
     });
   }
 
+  private getUpdatedCoinsData(){
+    // get all coin ids that need to be updated
+    const coinNameIdList: string[] = this.coinsWithTransList.map(c => c.idName);
+
+    this.coinGeckoService.getCryptoCoinSimplePriceData(coinNameIdList).subscribe(res => {
+      let keysOfObjects: string[] = Object.keys(res)
+      console.log(keysOfObjects);
+
+      // if retrived data for id coins exists in coins array, update it with new prices
+      this.coinsWithTransList.forEach(c => {
+         if(keysOfObjects.includes(c.idName)) {
+          c.currentPriceUsd = res[c.idName].usd;
+          c.marketCapUsd = res[c.idName].usd_market_cap;
+          // maybe add usd24
+         }
+      });
+    });
+  }
+
 }
+
