@@ -41,7 +41,10 @@ export class Coin {
     public get holdingsValueUsd() {
         let totalHoldingsValue = 0;
         this.transactions.forEach(transaction => {
-            totalHoldingsValue = totalHoldingsValue + (transaction.quantity*this.currentPriceUsd);
+            // make goldings value calculation only if trans is buy or transfer in
+            if(transaction.type == 1 || transaction.type == 3) {
+                totalHoldingsValue = totalHoldingsValue + (transaction.quantity*this.currentPriceUsd);
+            }
         });
         return totalHoldingsValue;
     }
