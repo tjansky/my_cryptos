@@ -30,45 +30,36 @@ export class Coin {
 
     //quantity of token holding
     public get holdings() {
-        let totalHoldings = 0;
-        this.transactions.forEach(transaction => {
-            totalHoldings = totalHoldings + transaction.quantity;
-        });
-        return totalHoldings;
+        return this.calculateHoldings(this.transactions)
     }
 
     //usd vale od token holding
     public get holdingsValueUsd() {
-        let totalHoldingsValue = 0;
-        this.transactions.forEach(transaction => {
-            // make goldings value calculation only if trans is buy or transfer in
-            if(transaction.type == 1 || transaction.type == 3) {
-                totalHoldingsValue = totalHoldingsValue + (transaction.quantity*this.currentPriceUsd);
-            }
-        });
-        return totalHoldingsValue;
+        let quantity = this.calculateHoldings(this.transactions);
+        return quantity*this.currentPriceUsd;
     }
 
-    //average token purchase price
-    public get averagePurchasePrice() {
-        let totalHoldingsCost = 0;
-        this.transactions.forEach(transaction => {
-            totalHoldingsCost = totalHoldingsCost + transaction.cost;
-        });
-        return totalHoldingsCost/this.transactions.filter(t=> t.cost>0).length;
-    }
+    //average token purchase price - DONT THINK WORKS FOR NOW
+    // public get averagePurchasePrice() {
+    //     let totalHoldingsCost = 0;
+    //     this.transactions.forEach(transaction => {
+    //         totalHoldingsCost = totalHoldingsCost + transaction.cost;
+    //     });
+    //     return totalHoldingsCost/this.transactions.filter(t=> t.cost>0).length;
+    // }
 
     // how much profit or loss there is
     public get profitLoss() {
-        let totalHoldingsValue = 0;
-        let totalHoldingsCost = 0;
-        
-        this.transactions.forEach(transaction => {
-            totalHoldingsValue = totalHoldingsValue + (transaction.quantity*this.currentPriceUsd);
-            totalHoldingsCost = totalHoldingsCost + transaction.cost + transaction.fee;
-        });
-        return totalHoldingsValue-totalHoldingsCost;
+        let quantity = this.calculateHoldings(this.transactions);
+
+        let totalHoldingsValue = quantity*this.currentPriceUsd;
+        let totalCost = this.calculateAllCost(this.transactions);
+        let totalEarned = this.calculateAllEarned(this.transactions);
+
+        return (totalHoldingsValue-totalCost)+totalEarned;
     }
+
+    
 
     constructor(idName: string, 
                 symbol: string, 
@@ -109,6 +100,37 @@ export class Coin {
         this.transactions = transactions
     }
     
+
+
+    //helper methods
+    private calculateHoldings(transactions: TransactionDto[]): number{
+        let quantity = 0;
+        transactions.forEach(t => {
+            if(t.type == 1 || t.type == 3){
+                quantity += t.quantity;
+            } else if(t.type == 2 || t.type == 4){
+                quantity -= t.quantity;
+            }
+        });
+        return quantity;
+    }
+
+    private calculateAllCost(transactions: TransactionDto[]): number{
+        let totalCost = 0;
+        transactions.forEach(t => {
+            totalCost += t.cost;
+        });
+        return totalCost;
+    }
+
+    private calculateAllEarned(transactions: TransactionDto[]): number{
+        let totalEarned = 0;
+        transactions.forEach(t => {
+            totalEarned += t.earned;
+        });
+        return totalEarned;
+    }
+
 }
 
 
