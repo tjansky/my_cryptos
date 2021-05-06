@@ -62,7 +62,7 @@ export class Coin {
         
         this.transactions.forEach(transaction => {
             totalHoldingsValue = totalHoldingsValue + (transaction.quantity*this.currentPriceUsd);
-            totalHoldingsCost = totalHoldingsCost + transaction.cost;
+            totalHoldingsCost = totalHoldingsCost + transaction.cost + transaction.fee;
         });
         return totalHoldingsValue-totalHoldingsCost;
     }

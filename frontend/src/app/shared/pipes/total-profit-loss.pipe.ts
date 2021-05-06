@@ -12,9 +12,6 @@ export class TotalProfitLossPipe implements PipeTransform {
     value.forEach(x => {
       if(x.profitLoss){
         totalProfitLoss += x.profitLoss;
-        x.transactions.forEach(t => {
-          totalProfitLoss -= t.fee;
-        });
       };
     });
 
