@@ -18,6 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BuyFormComponent } from './shared/modals/add-transaction-modal/buy-form/buy-form.component';
 import { SellFormComponent } from './shared/modals/add-transaction-modal/sell-form/sell-form.component';
 import { TransferFormComponent } from './shared/modals/add-transaction-modal/transfer-form/transfer-form.component';
+import { TotalBalancePipe } from './shared/pipes/total-balance.pipe';
+import { TotalProfitLossPipe } from './shared/pipes/total-profit-loss.pipe';
+import { Change24hPipe } from './shared/pipes/change24h.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { TransferFormComponent } from './shared/modals/add-transaction-modal/tra
     AddTransactionModalComponent,
     BuyFormComponent,
     SellFormComponent,
-    TransferFormComponent
+    TransferFormComponent,
+    TotalBalancePipe,
+    TotalProfitLossPipe,
+    Change24hPipe
   ],
   imports: [
     BrowserModule,

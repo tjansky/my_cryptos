@@ -1,4 +1,13 @@
 .stats-wrapper{
     display: flex;
+    justify-content: center;
     gap: 60px;
+    height: 100px;
 }
+
+.stats-wrapper div {
+    border: solid 1px black;
+    width: 220px;
+    text-align: center;
+    font-size: 20px;
+} 

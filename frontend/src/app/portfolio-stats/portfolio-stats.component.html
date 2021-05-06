@@ -1,11 +1,11 @@
 <div class="stats-wrapper">
     <div>
-        Total Amount: 2000$
+        {{coinsWithTransList | totalBalance | currency}}
     </div>
     <div>
-        24h Change: 123$
+        {{coinsWithTransList | change24h | currency}}
     </div>
     <div>
-        Total Profit/Loss: 1200$
+        {{coinsWithTransList | totalProfitLoss | currency}}
     </div>
 </div>
