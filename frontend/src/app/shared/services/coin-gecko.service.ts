@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CoinDataDto } from '../dtos/CoinDataDto';
+import { CoinNameSymbolDto } from '../dtos/CoinNameSymbolDto';
 import { SimplePriceCoinDto } from '../dtos/SimplePriceCoinDto';
 
 @Injectable({
@@ -28,6 +29,10 @@ export class CoinGeckoService {
     });
     
     return this.http.get<SimplePriceCoinDto[]>('https://api.coingecko.com/api/v3/simple/price'+idsPartUrl+currencyPartUrl+'&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true');
+  }
+
+  getAllCoinNamesAndIds() {
+    return this.http.get<CoinNameSymbolDto[]>("https://api.coingecko.com/api/v3/coins/list?include_platform=false");
   }
 
 }

@@ -10,8 +10,13 @@
   <div class="modal-body">
     <div>Search for coin you want follow</div>
     <div>
-        <input [(ngModel)]="coinNameSearch" name="coinNameSearch" type="text">
+        <input [(ngModel)]="coinNameSearch" (ngModelChange)="onSearchChnage($event)" name="coinNameSearch" type="text">
     </div>
-    <button (click)="onAddCoin()">add</button>
+    <div *ngIf="allCoinNameIdsList.length > 0">
+      <div (click)="onAddCoin(coin.id)" *ngFor="let coin of filteredCoinNameIdsList">
+        {{coin.name}}
+      </div>
+    </div>
+    <!-- <button (click)="onAddCoin()">add</button> -->
   </div>
 </ng-template>
