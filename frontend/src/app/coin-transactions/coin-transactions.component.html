@@ -17,7 +17,7 @@
                 <th>Actions</th>
             </tr>
             <tr *ngFor="let trans of coinWithTrans.transactions">
-                <td>{{trans.type}}</td>
+                <td>{{trans.type | transactionType}}</td>
                 <td>{{trans.price}}</td>
                 <td>{{trans.quantity}}</td>
                 <td>{{trans.fee}}</td>

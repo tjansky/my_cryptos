@@ -21,6 +21,7 @@ import { TransferFormComponent } from './shared/modals/add-transaction-modal/tra
 import { TotalBalancePipe } from './shared/pipes/total-balance.pipe';
 import { TotalProfitLossPipe } from './shared/pipes/total-profit-loss.pipe';
 import { Change24hPipe } from './shared/pipes/change24h.pipe';
+import { TransactionTypePipe } from './shared/pipes/transaction-type.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { Change24hPipe } from './shared/pipes/change24h.pipe';
     TransferFormComponent,
     TotalBalancePipe,
     TotalProfitLossPipe,
-    Change24hPipe
+    Change24hPipe,
+    TransactionTypePipe
   ],
   imports: [
     BrowserModule,
