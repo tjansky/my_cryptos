@@ -1,1 +1,21 @@
-<p>sell-form works!</p>
+<div>
+    <form [formGroup]="sellForm" (ngSubmit)="onSubmit(sellForm)">
+        <div>
+            <label for="">Total Received</label>
+            <input formControlName="totalReceived" type="number">
+        </div>
+        <div>
+            <label for="">Quantity</label>
+            <input formControlName="quantity" type="number">
+        </div>
+        <div>
+            <label for="">Price Per Coin</label>
+            <div></div>
+        </div>
+        <div>
+            <label for="">Fee</label>
+            <input formControlName="fee" type="number" value=0>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</div>
