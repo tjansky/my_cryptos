@@ -54,9 +54,10 @@ export class Coin {
 
         let totalHoldingsValue = quantity*this.currentPriceUsd;
         let totalCost = this.calculateAllCost(this.transactions);
+        let totalFee = this.calculateAllFee(this.transactions)
         let totalEarned = this.calculateAllEarned(this.transactions);
 
-        return (totalHoldingsValue-totalCost)+totalEarned;
+        return (totalHoldingsValue-(totalCost+totalFee))+totalEarned;
     }
 
     
@@ -118,9 +119,17 @@ export class Coin {
     private calculateAllCost(transactions: TransactionDto[]): number{
         let totalCost = 0;
         transactions.forEach(t => {
-            totalCost += (t.cost + t.fee);
+            totalCost += t.cost;
         });
         return totalCost;
+    }
+
+    private calculateAllFee(transactions: TransactionDto[]): number{
+        let totalFee = 0;
+        transactions.forEach(t => {
+            totalFee += t.fee;
+        });
+        return totalFee;
     }
 
     private calculateAllEarned(transactions: TransactionDto[]): number{
