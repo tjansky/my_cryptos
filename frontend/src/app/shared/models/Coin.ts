@@ -118,7 +118,7 @@ export class Coin {
     private calculateAllCost(transactions: TransactionDto[]): number{
         let totalCost = 0;
         transactions.forEach(t => {
-            totalCost += t.cost;
+            totalCost += (t.cost + t.fee);
         });
         return totalCost;
     }

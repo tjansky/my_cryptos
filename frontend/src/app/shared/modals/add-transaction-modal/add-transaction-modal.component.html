@@ -24,7 +24,7 @@
         <div>
           <app-buy-form [coin]="coin" *ngIf="activeForm == 1"></app-buy-form>
           <app-sell-form [coin]="coin" *ngIf="activeForm == 2"></app-sell-form>
-          <app-transfer-form *ngIf="activeForm == 3"></app-transfer-form>
+          <app-transfer-form [coin]="coin" *ngIf="activeForm == 3"></app-transfer-form>
         </div>
     </div>
   </div>

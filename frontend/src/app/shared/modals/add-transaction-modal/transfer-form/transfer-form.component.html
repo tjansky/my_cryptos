@@ -1,17 +1,20 @@
 <div>
-    <div>
-        <label for="">Transfer</label>
-        <select name="" id="">
-            <option value="">Transfer In</option>
-            <option value="">Transfer Out</option>
-        </select>
-    </div>
-    <div>
-        <label for="">Quantity</label>
-        <input type="number">
-    </div>
-    <div>
-        <label for="">Fee</label>
-        <input type="number">
-    </div>
+    <form [formGroup]="transferForm" (ngSubmit)="onSubmit(transferForm)">
+        <div>
+            <label for="">Transfer</label>
+            <select formControlName="transferType" name="transferType" id="">
+                <option value="3">Transfer In</option>
+                <option value="4">Transfer Out</option>
+            </select>
+        </div>
+        <div>
+            <label for="">Quantity</label>
+            <input formControlName="quantity" type="number">
+        </div>
+        <div>
+            <label for="">Fee</label>
+            <input formControlName="fee" type="number">
+        </div>
+        <button type="submit">Save</button>
+    </form>
 </div>
