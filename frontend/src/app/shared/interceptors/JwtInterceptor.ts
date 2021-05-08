@@ -9,6 +9,8 @@ export class JwtInterceptor implements HttpInterceptor {
     constructor(private authenticationService: AuthenticationService){} 
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        if(req.url.startsWith('https://api.coingecko.com'))
+            return next.handle(req);
         // add authorization header with jwt token if available
         let currentUser = this.authenticationService.currentUserValue;
         // console.log("current user JWT interceptor: ",currentUser);
