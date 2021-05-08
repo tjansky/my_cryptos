@@ -22,6 +22,8 @@ import { TotalBalancePipe } from './shared/pipes/total-balance.pipe';
 import { TotalProfitLossPipe } from './shared/pipes/total-profit-loss.pipe';
 import { Change24hPipe } from './shared/pipes/change24h.pipe';
 import { TransactionTypePipe } from './shared/pipes/transaction-type.pipe';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { TransactionTypePipe } from './shared/pipes/transaction-type.pipe';
     TotalBalancePipe,
     TotalProfitLossPipe,
     Change24hPipe,
-    TransactionTypePipe
+    TransactionTypePipe,
+    AuthenticationComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,

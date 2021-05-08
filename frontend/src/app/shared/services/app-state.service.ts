@@ -20,7 +20,7 @@ export class AppStateService {
   constructor(private router: Router) { }
 
   navigateToTransactionDetails(coinNameId: string){
-    this.router.navigateByUrl('/transactions/'+coinNameId);
+    this.router.navigateByUrl('/portfolio/transactions/'+coinNameId);
   }
 
   getCoinList() {
