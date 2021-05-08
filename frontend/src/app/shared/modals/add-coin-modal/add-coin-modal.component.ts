@@ -48,7 +48,7 @@ export class AddCoinModalComponent implements OnInit {
   }
 
   onAddCoin(coinNameId: string){
-    this.apiHelperService.addAddedCoin(this.coinNameSearch).subscribe(res => {
+    this.apiHelperService.addAddedCoin(coinNameId).subscribe(res => {
       if(res == 1) {
         this.appStateService.sendNewCoinIdSubject(coinNameId);
       } else {
