@@ -4,13 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoinGraphsComponent } from './coin-graphs/coin-graphs.component';
-import { CoinTableComponent } from './coin-table/coin-table.component';
-import { CoinCardsComponent } from './coin-cards/coin-cards.component';
-import { CoinTransactionsComponent } from './coin-transactions/coin-transactions.component';
-import { AccountSettingsComponent } from './account-settings/account-settings.component';
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { PortfolioStatsComponent } from './portfolio-stats/portfolio-stats.component';
+import { CoinGraphsComponent } from './portfolio/coin-graphs/coin-graphs.component';
+import { CoinTableComponent } from './portfolio/coin-table/coin-table.component';
+import { CoinCardsComponent } from './portfolio/coin-cards/coin-cards.component';
+import { CoinTransactionsComponent } from './portfolio/coin-transactions/coin-transactions.component';
+import { AccountSettingsComponent } from './portfolio/account-settings/account-settings.component';
+import { NavigationBarComponent } from './portfolio/navigation-bar/navigation-bar.component';
+import { PortfolioStatsComponent } from './portfolio/portfolio-stats/portfolio-stats.component';
 import { AddCoinModalComponent } from './shared/modals/add-coin-modal/add-coin-modal.component';
 import { AddTransactionModalComponent } from './shared/modals/add-transaction-modal/add-transaction-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -24,6 +24,8 @@ import { Change24hPipe } from './shared/pipes/change24h.pipe';
 import { TransactionTypePipe } from './shared/pipes/transaction-type.pipe';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { RegisterComponent } from './authentication/register/register.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     Change24hPipe,
     TransactionTypePipe,
     AuthenticationComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

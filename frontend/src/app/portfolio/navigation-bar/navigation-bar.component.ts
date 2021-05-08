@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateTransactionDto } from '../shared/dtos/CreateTransactionDto';
-import { ApiHelperService } from '../shared/services/api-helper.service';
-import { AppStateService } from '../shared/services/app-state.service';
+import { CreateTransactionDto } from '../../shared/dtos/CreateTransactionDto';
+import { ApiHelperService } from '../../shared/services/api-helper.service';
+import { AppStateService } from '../../shared/services/app-state.service';
 
 @Component({
   selector: 'app-navigation-bar',

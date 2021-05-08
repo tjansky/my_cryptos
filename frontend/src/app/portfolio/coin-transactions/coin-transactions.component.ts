@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Coin } from '../shared/models/Coin';
-import { ApiHelperService } from '../shared/services/api-helper.service';
-import { AppStateService } from '../shared/services/app-state.service';
+import { Coin } from '../../shared/models/Coin';
+import { ApiHelperService } from '../../shared/services/api-helper.service';
+import { AppStateService } from '../../shared/services/app-state.service';
 
 @Component({
   selector: 'app-coin-transactions',
