@@ -27,6 +27,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { JwtInterceptor } from './shared/interceptors/JwtInterceptor';
+import { ErrorInterceptor } from './shared/interceptors/ErrorInterceptor';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { JwtInterceptor } from './shared/interceptors/JwtInterceptor';
     ReactiveFormsModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
