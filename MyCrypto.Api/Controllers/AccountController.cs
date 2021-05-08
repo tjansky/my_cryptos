@@ -23,7 +23,7 @@ namespace MyCrypto.Api.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<UserDto>> Register([FromQuery] RegisterUserDto registerUser)
+        public async Task<ActionResult<UserDto>> Register([FromBody] RegisterUserDto registerUser)
         {
             if (string.IsNullOrEmpty(registerUser.Username) || string.IsNullOrEmpty(registerUser.Password))
                 return BadRequest();
@@ -48,7 +48,7 @@ namespace MyCrypto.Api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<UserDto>> Login([FromQuery] LoginUserDto loginUser)
+        public async Task<ActionResult<UserDto>> Login([FromBody] LoginUserDto loginUser)
         {
             var user = await _userRepo.GetUserByName(loginUser.Username);
 
