@@ -9,16 +9,17 @@ import { CoinTransactionsComponent } from './portfolio/coin-transactions/coin-tr
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: PortfolioComponent},
+  {path: '', redirectTo: '/portfolio/coin-table', pathMatch: 'full'},
   {path: 'auth', component: AuthenticationComponent,
     children: [
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent}
     ]
 },
-  {path: 'portfolio', component: PortfolioComponent, 
+  {path: 'portfolio', component: PortfolioComponent, canActivate: [AuthGuard], 
     children: [
       {path: '', component: CoinTableComponent},
       {path: 'coin-table', component: CoinTableComponent},
