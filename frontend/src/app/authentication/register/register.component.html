@@ -1,1 +1,14 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+    <div>
+        <label for="">Username</label>
+        <input formControlName="username" type="text">
+    </div>
+    <div>
+        <label for="">Password</label>
+        <input formControlName="password" type="password">
+    </div>
+    <div>
+        <button class="btn btn-danger" type="submit">Register</button> |
+        <button (click)="onClickForLoginForm()" class="btn btn-danger" type="button">Go back to Login</button>
+    </div>
+</form>

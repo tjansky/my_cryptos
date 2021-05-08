@@ -31,6 +31,17 @@ export class AuthenticationService {
       }));
   }
 
+  register(username: string, password: string) {
+    return this.http.post<any>('https://localhost:5001/account/register', { username, password })
+      .pipe(map(user => {
+        console.log("registrirani user: ",user);
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return user;
+      }));
+  }
+
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');

@@ -1,2 +1,15 @@
-<p>login works!</p>
-<button (click)="onLogin()">Login</button>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+    <div>
+        <label for="">Username</label>
+        <input formControlName="username" type="text">
+    </div>
+    <div>
+        <label for="">Password</label>
+        <input formControlName="password" type="password">
+    </div>
+    <div>
+        <button class="btn btn-success" type="submit">Login</button> |
+        <button (click)="onClickForRegisterForm()" class="btn btn-success" type="button">Click to register</button>
+    </div>
+</form>
