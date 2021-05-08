@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { CreateTransactionDto } from '../../shared/dtos/CreateTransactionDto';
 import { ApiHelperService } from '../../shared/services/api-helper.service';
 import { AppStateService } from '../../shared/services/app-state.service';
@@ -10,41 +12,15 @@ import { AppStateService } from '../../shared/services/app-state.service';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor(private apiHelperService: ApiHelperService,private appStateService: AppStateService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onCoinAdd(coinId){
-    this.apiHelperService.addAddedCoin(coinId).subscribe(res => {
-      if(res == 1) {
-        this.appStateService.sendNewCoinIdSubject(coinId);
-      } else {
-        alert("something went wrong while insert added coin");
-      }
-    });
-  }
-
-  onTransactionAdd(coinNameId: string){
-    let createTrans: CreateTransactionDto = {addedCoinId: 'ethereum', type: 1, price: 2000, quantity: 1, fee: 0, cost: 2000, earned: 0}
-    this.apiHelperService.addTransaction(createTrans).subscribe(res => {
-      if (res != null) {
-        // send new trans to coin list via subject
-        // TODO - will have to send coinNAMEID with transactiondto
-        this.appStateService.sendAddedTransaction(res);
-        console.log(res);
-      } else {
-        alert("something went wrong while insert coin transaction");
-      }
-    });
-  }
-
-  onCoinDelete(){
-
-  }
-
-  onTransactionDelete(){
-    
+  onLogout(){
+    // emptying currentUser subject and removing token from local storage
+    this.authService.logout();
+    this.router.navigate(['/auth/login']);
   }
 
 }

@@ -5,17 +5,12 @@
     <div>
         <button [routerLink]="['/portfolio/coin-table']" class="btn btn-danger">Coin table</button>
     </div>
+    <br>
     <div>
         <button [routerLink]="['/auth/login']" class="btn btn-primary">Auth</button>
     </div>
-    <br> <br> <br>
     <div>
-        <button (click)="onCoinAdd('cardano')" class="btn btn-success">Add coin</button>
+        <button type="button" class="btn btn-primary" (click)="onLogout()">Logout</button>
     </div>
-    <div>
-        <button (click)="onTransactionAdd('ethereum')" class="btn btn-success">Add transaction for eth</button>
-    </div>
-    <div>
-        <button class="btn btn-success">Delete coin</button>
-    </div>
+
 </div>
