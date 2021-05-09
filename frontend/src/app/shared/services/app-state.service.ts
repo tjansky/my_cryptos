@@ -27,7 +27,7 @@ export class AppStateService {
     return this.coinListSource.asObservable();
   }
 
-  updateCoinList(newCoinList) {
+  updateCoinList(newCoinList: Coin[]) {
     this.coinListSource.next(newCoinList);
   }
 

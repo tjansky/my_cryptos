@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { timer } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 import { Coin } from '../shared/models/Coin';
 import { ApiHelperService } from '../shared/services/api-helper.service';
 import { AppStateService } from '../shared/services/app-state.service';
@@ -13,45 +13,53 @@ import { CoinGeckoService } from '../shared/services/coin-gecko.service';
 export class PortfolioComponent implements OnInit {
   coinsWithTransList: Coin[] = [];
 
+  timerSubscription: Subscription;
+  getAddedCoinsIdsSubscription: Subscription;
+  getNewCoinIdSubscription: Subscription;
+  getAddedTransactionSubscription: Subscription;
+  getDeletedCoinSubscription: Subscription;
+  getDeletedTransactionIdSubscription: Subscription;
+
 
   constructor(private coinGeckoService: CoinGeckoService, private apiHelperService: ApiHelperService, private appStateService: AppStateService) {}
 
 
   ngOnInit(){
     // retriving data for already added coins
-    this.apiHelperService.getAddedCoinsIds().subscribe(coinIdList => {
+    this.getAddedCoinsIdsSubscription = this.apiHelperService.getAddedCoinsIds().subscribe(coinIdList => {
       coinIdList.forEach(coinIdObject => {
         this.getCoinDataAndUpdateList(coinIdObject.coinNameId, coinIdObject.transactions);
       })
     }); 
 
     // subject that listens for new coin
-    this.appStateService.getNewCoinIdSubject().subscribe(addedCoinId => {
+    this.getNewCoinIdSubscription = this.appStateService.getNewCoinIdSubject().subscribe(addedCoinId => {
       this.getCoinDataAndUpdateList(addedCoinId);
     });
 
     // subject that listens for added transaction and updates coin object
-    this.appStateService.getAddedTransaction().subscribe(addedTrans => {
+    this.getAddedTransactionSubscription = this.appStateService.getAddedTransaction().subscribe(addedTrans => {
       this.coinsWithTransList.find(c => c.idName == addedTrans.addedCoinNameId).transactions.push(addedTrans);
       this.appStateService.updateCoinList(this.coinsWithTransList);
     });
 
     // subject that listens for deleted coin and removes it from list
-    this.appStateService.getDeletedCoin().subscribe(deletedCoin => {
+    this.getDeletedCoinSubscription = this.appStateService.getDeletedCoin().subscribe(deletedCoin => {
       this.coinsWithTransList = this.coinsWithTransList.filter(c => c.idName != deletedCoin.coinNameId);
       this.appStateService.updateCoinList(this.coinsWithTransList);
     });
 
     // subject that listens for deleted transaction and updates coin object
-    this.appStateService.getDeletedTransactionId().subscribe(deletedTransId => {
+    this.getDeletedTransactionIdSubscription = this.appStateService.getDeletedTransactionId().subscribe(deletedTransId => {
       this.coinsWithTransList.forEach(c => {
         c.transactions = c.transactions.filter(t => t.id != deletedTransId);
       });
+      this.appStateService.updateCoinList(this.coinsWithTransList);
     });
-    this.appStateService.updateCoinList(this.coinsWithTransList);
+    
 
     // interval that gets coin data with price changes and updates changes
-    timer(5000, 60000).subscribe(x => {
+    this.timerSubscription = timer(5000, 60000).subscribe(x => {
       this.getUpdatedCoinsData();
       this.appStateService.updateCoinList(this.coinsWithTransList);
     });
@@ -104,6 +112,15 @@ export class PortfolioComponent implements OnInit {
          }
       });
     });
+  }
+
+  ngOnDestroy() {
+    this.timerSubscription.unsubscribe();
+    this.getAddedCoinsIdsSubscription.unsubscribe();
+    this.getNewCoinIdSubscription.unsubscribe();
+    this.getAddedTransactionSubscription.unsubscribe();
+    this.getDeletedCoinSubscription.unsubscribe();
+    this.getDeletedTransactionIdSubscription.unsubscribe();
   }
 
 }
