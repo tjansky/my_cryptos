@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Coin } from '../../shared/models/Coin';
 import { ApiHelperService } from '../../shared/services/api-helper.service';
 import { AppStateService } from '../../shared/services/app-state.service';
@@ -9,13 +10,14 @@ import { AppStateService } from '../../shared/services/app-state.service';
   styleUrls: ['./coin-cards.component.css']
 })
 export class CoinCardsComponent implements OnInit {
+  getCoinsSubscription: Subscription;
   coinsWithTransList: Coin[] = [];
   
   constructor(private appStateService: AppStateService, private apiHelperService: ApiHelperService) { }
 
   ngOnInit(): void {
     // b subject - listening for coin list changes
-    this.appStateService.getCoinList().subscribe(updatedCoinList => {
+    this.getCoinsSubscription = this.appStateService.getCoinList().subscribe(updatedCoinList => {
       this.coinsWithTransList = updatedCoinList;
     });
     
@@ -34,6 +36,10 @@ export class CoinCardsComponent implements OnInit {
       // let know other components that coin got deleted
       this.appStateService.sendDeletedCoin(deletedCoin);
     });
+  }
+
+  ngOnDestroy(){
+    this.getCoinsSubscription.unsubscribe();
   }
 
 }

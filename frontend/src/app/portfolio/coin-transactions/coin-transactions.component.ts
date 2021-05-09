@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Coin } from '../../shared/models/Coin';
 import { ApiHelperService } from '../../shared/services/api-helper.service';
 import { AppStateService } from '../../shared/services/app-state.service';
@@ -10,6 +11,7 @@ import { AppStateService } from '../../shared/services/app-state.service';
   styleUrls: ['./coin-transactions.component.css']
 })
 export class CoinTransactionsComponent implements OnInit {
+  getCoinsSubscription: Subscription;
 
   coinWithTrans: Coin;
   // selectedCoinIdName = 'ethereum';
@@ -18,7 +20,7 @@ export class CoinTransactionsComponent implements OnInit {
 
   ngOnInit(): void {
     // b subject - listening for coin list changes
-    this.appStateService.getCoinList().subscribe(updatedCoinList => {
+    this.getCoinsSubscription = this.appStateService.getCoinList().subscribe(updatedCoinList => {
       if(updatedCoinList == null)
         return;
       const coinNameId: string = this.route.snapshot.params.id;
@@ -37,4 +39,7 @@ export class CoinTransactionsComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(){
+    this.getCoinsSubscription.unsubscribe();
+  }
 }
