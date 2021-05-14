@@ -5,10 +5,19 @@
     </div>
     <div>
         <div>{{coinsWithTransList | change24h | currency}}</div>
-        <div>24h Change ({{coinsWithTransList | change24hPercentage}}%)</div>
+        <div>24h Change 
+            <span [ngClass]="coinsWithTransList | change24hPercentage | plusMinus">
+                ({{coinsWithTransList | change24hPercentage}}%)
+            </span> 
+        </div>
     </div>
     <div>
         <div>{{coinsWithTransList | totalProfitLoss | currency}}</div>
-        <div>Total Profit Loss ({{coinsWithTransList | totalProfitLossPercentage}}%)</div>
+        <div>Total Profit Loss 
+            <span [ngClass]="coinsWithTransList | totalProfitLossPercentage | plusMinus">
+                ({{coinsWithTransList | totalProfitLossPercentage}}%)
+            </span>
+        </div>
     </div>
 </div>
+
