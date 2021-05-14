@@ -1,16 +1,31 @@
 .stats-wrapper{
     display: flex;
     justify-content: center;
-    gap: 60px;
-    height: 100px;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 40px;
+    margin-top: 10px;
 }
 
-.stats-wrapper div {
+.stats-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: solid 1px black;
     width: 220px;
+    height: 120px;
     text-align: center;
-    font-size: 20px;
+    border-radius: 16px;
 } 
+
+.stats-card-amount{
+    font-size: 25px;
+}
+
+.stats-card-details{
+    font-size: 17px;
+}
 
 .plusPercentage{
     color: #4EAF0A;

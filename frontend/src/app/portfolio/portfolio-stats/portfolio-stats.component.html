@@ -1,19 +1,19 @@
 <div class="stats-wrapper">
-    <div>
-        <div appChangeRedGreen>{{coinsWithTransList | totalBalance | currency}}</div>
-        <div>Total Balance</div>
+    <div class="stats-card">
+        <div class="stats-card-amount">{{coinsWithTransList | totalBalance | currency}}</div>
+        <div class="stats-card-details">Total Balance</div>
     </div>
-    <div>
-        <div>{{coinsWithTransList | change24h | currency}}</div>
-        <div>24h Change 
+    <div class="stats-card">
+        <div class="stats-card-amount">{{coinsWithTransList | change24h | currency}}</div>
+        <div class="stats-card-details">24h Change 
             <span [ngClass]="coinsWithTransList | change24hPercentage | plusMinus">
                 ({{coinsWithTransList | change24hPercentage}}%)
             </span> 
         </div>
     </div>
-    <div>
-        <div>{{coinsWithTransList | totalProfitLoss | currency}}</div>
-        <div>Total Profit Loss 
+    <div class="stats-card">
+        <div class="stats-card-amount">{{coinsWithTransList | totalProfitLoss | currency}}</div>
+        <div class="stats-card-details">Total Profit Loss 
             <span [ngClass]="coinsWithTransList | totalProfitLossPercentage | plusMinus">
                 ({{coinsWithTransList | totalProfitLossPercentage}}%)
             </span>
