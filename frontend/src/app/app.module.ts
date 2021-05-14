@@ -29,6 +29,7 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { JwtInterceptor } from './shared/interceptors/JwtInterceptor';
 import { ErrorInterceptor } from './shared/interceptors/ErrorInterceptor';
 import { Change24hPercentagePipe } from './shared/pipes/change24h-percentage.pipe';
+import { TotalProfitLossPercentagePipe } from './shared/pipes/total-profit-loss-percentage.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { Change24hPercentagePipe } from './shared/pipes/change24h-percentage.pip
     PortfolioComponent,
     LoginComponent,
     RegisterComponent,
-    Change24hPercentagePipe
+    Change24hPercentagePipe,
+    TotalProfitLossPercentagePipe
   ],
   imports: [
     BrowserModule,

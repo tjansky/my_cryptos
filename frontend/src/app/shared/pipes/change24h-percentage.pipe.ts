@@ -20,7 +20,7 @@ export class Change24hPercentagePipe implements PipeTransform {
         totalBalance += c.holdingsValueUsd;
       });
 
-    change24hpercentage = ((change24hcurrency/totalBalance)*100)
+    change24hpercentage = ((change24hcurrency/totalBalance)*100);
     
     if(Number.isNaN(change24hpercentage)){
       return '+0';
