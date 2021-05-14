@@ -12,12 +12,15 @@ import { AppStateService } from '../../shared/services/app-state.service';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authService: AuthenticationService, private router: Router, private appState: AppStateService) { }
 
   ngOnInit(): void {
   }
 
   onLogout(){
+    // removing coin data od current user
+    this.appState.updateCoinList(null);
+
     // emptying currentUser subject and removing token from local storage
     this.authService.logout();
     this.router.navigate(['/auth/login']);
