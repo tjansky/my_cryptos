@@ -31,6 +31,9 @@ import { ErrorInterceptor } from './shared/interceptors/ErrorInterceptor';
 import { Change24hPercentagePipe } from './shared/pipes/change24h-percentage.pipe';
 import { TotalProfitLossPercentagePipe } from './shared/pipes/total-profit-loss-percentage.pipe';
 import { PlusMinusPipe } from './shared/pipes/plus-minus.pipe';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './shared/interceptors/LoadingInterceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 
 @NgModule({
   declarations: [
@@ -65,11 +68,14 @@ import { PlusMinusPipe } from './shared/pipes/plus-minus.pipe';
     HttpClientModule,
     ModalModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
