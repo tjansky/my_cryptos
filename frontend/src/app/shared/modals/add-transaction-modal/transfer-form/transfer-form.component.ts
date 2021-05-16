@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { CreateTransactionDto } from 'src/app/shared/dtos/CreateTransactionDto';
 import { Coin } from 'src/app/shared/models/Coin';
 import { ApiHelperService } from 'src/app/shared/services/api-helper.service';
@@ -14,7 +15,9 @@ export class TransferFormComponent implements OnInit {
   @Input() coin: Coin;
   transferForm: FormGroup;
 
-  constructor(private apiHelperService: ApiHelperService, private appStateService: AppStateService) { }
+  constructor(private apiHelperService: ApiHelperService, 
+              private appStateService: AppStateService,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.transferForm = new FormGroup({
@@ -37,13 +40,13 @@ export class TransferFormComponent implements OnInit {
     };
 
     // insert buy transaction to db and send it to other components
-    this.apiHelperService.addTransaction(newTrans).subscribe(res => {
-      if (res != null) {
+    this.apiHelperService.addTransaction(newTrans).subscribe(
+      res => {
         this.appStateService.sendAddedTransaction(res);
-        console.log(res);
-      } else {
-        alert("something went wrong while insert coin transaction");
-      }
+        this.toastr.success("Successfuly added new transaction.");
+    }, error => {
+        // show toastr
+        this.toastr.error("Something went wrong while trying to add transaction");
     });
   }
 
