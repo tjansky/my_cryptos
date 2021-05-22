@@ -1,16 +1,32 @@
-<div class="navigation-container">
-    <div>
-        <button [routerLink]="['/portfolio/coin-cards']" class="btn btn-danger">Coin Cards</button>
-    </div>
-    <div>
-        <button [routerLink]="['/portfolio/coin-table']" class="btn btn-danger">Coin table</button>
-    </div>
-    <br>
-    <div>
-        <button [routerLink]="['/auth/login']" class="btn btn-primary">Auth</button>
-    </div>
-    <div>
-        <button type="button" class="btn btn-primary" (click)="onLogout()">Logout</button>
-    </div>
-
+<!-- sidebar -->
+<div class="navigation">
+    <ul>
+        <li>
+            <a [routerLink]="['/portfolio/coin-table']">
+                <span class="icon"><i class="fa fa-list-alt"></i></span>
+                <span class="title">Tables</span>
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="['/portfolio/coin-cards']">
+                <span class="icon"><i class="fa fa-table"></i></span>
+                <span class="title">Cards</span>
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="['/portfolio/coin-graphs']">
+                <span class="icon"><i class="fa fa-table"></i></span>
+                <span class="title">Charts</span>
+            </a>
+        </li>
+        <li>
+            <a (click)="onLogout()">
+                <span class="icon"><i class="fa fa-table"></i></span>
+                <span class="title">Sign Out</span>
+            </a>
+        </li>
+    </ul>
 </div>
+
+<!-- hamburger button -->
+<div onclick="togleHamburger()" class="toggle"></div>
