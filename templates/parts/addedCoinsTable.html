@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+
+            min-height: 100vh;
+        }
+
+        .coin-table-container{
+
+            margin: 80px 80px 80px 80px;
+            overflow-x:auto;
+        }
+
+        .coin-table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .coin-table-container th {
+            min-width: 120px;
+        }
+
+        .coin-table-container td{
+            text-align: center;
+        }
+
+        
+
+        .coin-table-container tr{
+            border-bottom: 1px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="coin-table-container">
+        <table>
+            <tr>
+                <th>Coin</th>
+                <th>Price</th>
+                <th>1h</th>
+                <th>24h</th>
+                <th>7d</th>
+                <th>Holdings</th>
+                <th>PNL</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <span>IC</span>
+                    <span>Bitcoin</span>
+                </td>
+                <td>$57,390.65</td>
+                <td>-3.2%</td>
+                <td>+16.2%</td>
+                <td>-7.9%</td>
+                <td>
+                    <span>$2,600.23</span> <br>
+                    <span>0.00044 BTC</span>
+                </td>
+                <td>
+                    <span>+$200.23</span> <br>
+                    <span>+34.18%</span>
+                </td>
+                <td>IC</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

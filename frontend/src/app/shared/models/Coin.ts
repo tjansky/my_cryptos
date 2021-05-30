@@ -60,6 +60,10 @@ export class Coin {
         return (totalHoldingsValue-(totalCost+totalFee))+totalEarned;
     }
 
+    public get totalCost(){
+        return this.calculateAllCost(this.transactions);
+    }
+
     
 
     constructor(idName: string, 

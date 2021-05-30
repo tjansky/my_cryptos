@@ -1,0 +1,23 @@
+.coin-table-container{
+
+    margin: 80px 80px 80px 80px;
+    overflow-x:auto;
+}
+
+.coin-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.coin-table-container th {
+    min-width: 120px;
+    text-align: center;
+}
+
+.coin-table-container td{
+    text-align: center;
+}
+
+.coin-table-container tr{
+    border-bottom: 1px solid black;
+}

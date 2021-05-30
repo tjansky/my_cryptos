@@ -1,4 +1,4 @@
-<br> <br>
+<!-- <br> <br>
 <div>
     <table *ngIf="(coinsWithTransList != null && coinsWithTransList.length > 0)" id="cryptos-table" style="border: black solid 1px; width: 100%; border-collapse: collapse;">
         <tr>
@@ -24,13 +24,47 @@
             <td>{{coinAndTrans.priceChange24hPercentage}}</td>
             <td>{{coinAndTrans.priceChange7dPercentage}}</td>
             <td>{{coinAndTrans.marketCapUsd | currency}}</td>
-            <td>$40,410,381,446 (fix)</td>
+            <td>$40,410,381,446 (fix)</td> -->
             <!-- <td><img src="../../../../assets/images/plusGraph.PNG" alt=""></td> -->
-            <td>{{coinAndTrans.holdings}} = {{coinAndTrans.holdingsValueUsd | currency}}</td>
+            <!-- <td>{{coinAndTrans.holdings}} = {{coinAndTrans.holdingsValueUsd | currency}}</td>
             <td>
                 <button (click)="onTransactionDetails(coinAndTrans.idName)">=</button>
                 <button (click)="onAddedCoinDelete(coinAndTrans.idName)">X</button>
             </td>
+        </tr>
+    </table>
+</div> -->
+
+<div class="coin-table-container">
+    <table>
+        <tr>
+            <th>Coin</th>
+            <th>Price</th>
+            <th>1h</th>
+            <th>24h</th>
+            <th>7d</th>
+            <th>Holdings</th>
+            <th>PNL</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let coinAndTrans of coinsWithTransList; let i = index">
+            <td>     
+                <span><img src="{{coinAndTrans.thumbImage}}" alt=""></span>
+                <span>{{coinAndTrans.name}}</span>
+            </td>
+            <td>{{coinAndTrans.currentPriceUsd | currency}}</td>
+            <td>NEMAM</td>
+            <td>{{coinAndTrans.priceChange24hPercentage}}%</td>
+            <td>{{coinAndTrans.priceChange7dPercentage}}%</td>
+            <td>
+                <span>{{coinAndTrans.holdingsValueUsd | currency}}</span> <br>
+                <span>{{coinAndTrans.holdings}} {{coinAndTrans.symbol | uppercase}}</span>
+            </td>
+            <td>
+                <span>{{coinAndTrans.holdingsValueUsd-coinAndTrans.totalCost | currency}}</span> <br>
+                <span>{{((coinAndTrans.holdingsValueUsd-coinAndTrans.totalCost)/coinAndTrans.holdingsValueUsd)*100}}%</span>
+            </td>
+            <td><i (click)="onTransactionDetails(coinAndTrans.idName)" class="far fa-edit"></i></td>
         </tr>
     </table>
 </div>
