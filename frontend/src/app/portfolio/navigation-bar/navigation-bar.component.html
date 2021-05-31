@@ -1,5 +1,5 @@
 <!-- sidebar -->
-<div class="navigation">
+<div [ngClass]="navActive ? 'active' : 'inactive'" class="navigation">
     <ul>
         <li>
             <a [routerLink]="['/portfolio/coin-table']">
@@ -29,4 +29,4 @@
 </div>
 
 <!-- hamburger button -->
-<div onclick="togleHamburger()" class="toggle"></div>
+<div (click)="toggleNavigation()" [ngClass]="navActive ? 'active' : 'inactive'" class="toggle"></div>

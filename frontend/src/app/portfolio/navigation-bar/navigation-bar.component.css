@@ -11,12 +11,11 @@
     background-color: #66615B;
     transition: 0.5s;
     overflow: hidden;
-    margin-right: 100px;
 }
 
 .navigation:hover,
 .navigation.active{
-    width: 260px;
+    width: 230px;
 }
 
 .navigation ul{

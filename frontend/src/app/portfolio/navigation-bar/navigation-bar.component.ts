@@ -13,6 +13,7 @@ import { AppStateService } from '../../shared/services/app-state.service';
 export class NavigationBarComponent implements OnInit {
 
   constructor(private authService: AuthenticationService, private router: Router, private appState: AppStateService) { }
+  navActive: boolean = false;
 
   ngOnInit(): void {
   }
@@ -24,6 +25,15 @@ export class NavigationBarComponent implements OnInit {
     // emptying currentUser subject and removing token from local storage
     this.authService.logout();
     this.router.navigate(['/auth/login']);
+  }
+
+  toggleNavigation(){
+    this.navActive = !this.navActive;
+    
+    // if navActive is true set left margin bigger as side bar is with transition (230px)
+
+    // else put left margin on default (60px)
+
   }
 
 }
