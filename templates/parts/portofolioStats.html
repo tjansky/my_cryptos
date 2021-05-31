@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: burlywood;
+            min-height: 100vh;
+        }
+
+        .stats-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 40px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .stats-card {
+            display: flex;
+            
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: solid 1px black;
+            min-width: 220px;
+            height: 120px;
+            text-align: center;
+            border-radius: 16px;
+            background-color: #FFFFFF;
+            border: none;
+            color: #66615B;
+        }
+
+        .stats-card-amount {
+            font-size: 25px;
+        }
+
+        .stats-card-details {
+            font-size: 17px;
+        }
+
+        .plusPercentage {
+            color: #4EAF0A;
+        }
+
+        .minusPercentage {
+            color: #E15241;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="stats-wrapper">
+        <div class="stats-card">
+            <div class="stats-card-amount">+22222</div>
+            <div class="stats-card-details">Total Balance</div>
+        </div>
+        <div class="stats-card">
+            <div class="stats-card-amount">+22222</div>
+            <div class="stats-card-details">24h Change 
+                <span>
+                    (123%)
+                </span> 
+            </div>
+        </div>
+        <div class="stats-card">
+            <div class="stats-card-amount">+22222</div>
+            <div class="stats-card-details">Total Profit Loss 
+                <span>
+                    (222%)
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    
+
+</body>
+
+</html>

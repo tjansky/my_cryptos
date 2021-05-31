@@ -5,6 +5,7 @@
     gap: 50px;
     margin-bottom: 40px;
     margin-top: 10px;
+    flex-wrap: wrap; /*instead of this make media query */
 }
 
 .stats-card {
